@@ -67,9 +67,9 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
         <div className="space-y-1">
           <h1 className="text-2xl font-black tracking-tighter premium-gradient-text uppercase lg:block">
-            ODYSSEY.OS
+            ODYSSEY.ZENITH
           </h1>
-          <p className="text-[10px] font-black text-slate-400 tracking-[0.4em] uppercase lg:block">Elite Education</p>
+          <p className="text-[10px] font-black text-slate-400 tracking-[0.4em] uppercase lg:block">System Horizon</p>
         </div>
       </div>
 

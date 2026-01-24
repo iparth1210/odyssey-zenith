@@ -616,3 +616,30 @@ h1 {
   animation: shake-extreme 0.2s cubic-bezier(.36, .07, .19, .97) both;
   box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
 }
+
+@keyframes loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

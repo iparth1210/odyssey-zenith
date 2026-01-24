@@ -29,7 +29,15 @@ const App: React.FC = () => {
   });
   const [roadmap, setRoadmap] = useState(() => {
     const saved = localStorage.getItem('odyssey_roadmap');
-    return saved ? JSON.parse(saved) : INITIAL_ROADMAP;
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Migration Layer: If user has old 2-month prototype, upgrade them to ZENITH 12-month expansion
+      if (Array.isArray(parsed) && parsed.length < 12) {
+        return INITIAL_ROADMAP;
+      }
+      return parsed;
+    }
+    return INITIAL_ROADMAP;
   });
   const [xp, setXp] = useState(() => Number(localStorage.getItem('odyssey_xp')) || 45200);
   const [projectNotes, setProjectNotes] = useState<string>(() => localStorage.getItem('odyssey_project_notes') || '');
@@ -113,10 +121,10 @@ const App: React.FC = () => {
   useEffect(() => {
     if (onboarding) {
       const stages = [
-        { delay: 1000, stage: 1 },
-        { delay: 2500, stage: 2 },
-        { delay: 4000, stage: 3 },
-        { delay: 5500, stage: 4 },
+        { delay: 500, stage: 1 },
+        { delay: 1200, stage: 2 },
+        { delay: 2000, stage: 3 },
+        { delay: 2800, stage: 4 },
       ];
       stages.forEach(({ delay, stage }) => {
         setTimeout(() => setOnboardingStage(stage), delay);
@@ -125,7 +133,7 @@ const App: React.FC = () => {
         setSynapticActive(false);
         setOnboarding(false);
         localStorage.setItem('odyssey_initialized', 'true');
-      }, 6000);
+      }, 3500);
     } else {
       setSynapticActive(false);
     }
@@ -325,8 +333,8 @@ const App: React.FC = () => {
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
             </button>
             <div className="flex items-baseline space-x-2 lg:space-x-3">
-              <span className="premium-gradient-text text-[10px] lg:text-sm tracking-[0.2em] transform-gpu hover:scale-105 transition-transform">ODYSSEY_PLATFORM</span>
-              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-40">v2.5.0</span>
+              <span className="premium-gradient-text text-[10px] lg:text-sm tracking-[0.2em] transform-gpu hover:scale-105 transition-transform">ODYSSEY_ZENITH</span>
+              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest opacity-40">v3.0.0</span>
             </div>
             <div className="hidden sm:block w-px h-6 bg-white/10"></div>
             <h4 className="hidden lg:block text-white text-[10px] font-black uppercase tracking-[0.4em] opacity-80">{activeTab}</h4>
@@ -386,17 +394,6 @@ const App: React.FC = () => {
         )
       }
 
-      {/* Neural Interface SVG Filters */}
-      <svg className="hidden">
-        <filter id="neural-lens">
-          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale={neuralIntensity / 10} />
-        </filter>
-        <filter id="pulse-displacement">
-          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" result="noise" />
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale={isSurge ? "15" : "0"} />
-        </filter>
-      </svg>
 
       <CommandPalette
         isOpen={commandPaletteOpen}
@@ -419,9 +416,15 @@ const App: React.FC = () => {
 
       {/* Synaptic Overlay Protocol */}
       {synapticActive && (
-        <div className="fixed inset-0 z-[300] pointer-events-none bg-indigo-500/5 backdrop-blur-[2px] animate-pulse">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full h-px bg-indigo-500/30 scale-x-0 animate-in slide-in-from-left duration-1000"></div>
+        <div className="fixed inset-0 z-[300] pointer-events-none bg-[#020617] backdrop-blur-[4px] flex items-center justify-center transition-opacity duration-1000">
+          <div className="w-full max-w-md space-y-4 px-12">
+            <div className="h-[2px] bg-indigo-500/20 rounded-full overflow-hidden">
+              <div className="h-full bg-indigo-500 animate-loading-bar"></div>
+            </div>
+            <div className="flex justify-between items-center text-[8px] font-black text-indigo-400 uppercase tracking-[0.4em]">
+              <span>Sync_Load</span>
+              <span className="animate-pulse">Active</span>
+            </div>
           </div>
         </div>
       )}
