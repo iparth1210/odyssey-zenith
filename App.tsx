@@ -14,59 +14,102 @@ import { INITIAL_ROADMAP } from './constants';
 import { ProjectTask } from './types';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'roadmap' | 'project' | 'mentor' | 'stats'>(() => (localStorage.getItem('odyssey_active_tab') as any) || 'roadmap');
+  const [activeTab, setActiveTab] = useState<'roadmap' | 'project' | 'mentor' | 'stats'>(() => {
+    try {
+      return (localStorage.getItem('odyssey_active_tab') as any) || 'roadmap';
+    } catch { return 'roadmap'; }
+  });
   const [lastTab, setLastTab] = useState(activeTab);
 
-  const [onboarding, setOnboarding] = useState(() => !localStorage.getItem('odyssey_initialized'));
+  const [onboarding, setOnboarding] = useState(() => {
+    try {
+      return !localStorage.getItem('odyssey_initialized');
+    } catch { return true; }
+  });
   const [onboardingStage, setOnboardingStage] = useState(0);
   const [synapticActive, setSynapticActive] = useState(true);
 
   // Persistence Layer
-  const [projectIdea, setProjectIdea] = useState<string>(() => localStorage.getItem('odyssey_project_idea') || '');
+  const [projectIdea, setProjectIdea] = useState<string>(() => {
+    try {
+      return localStorage.getItem('odyssey_project_idea') || '';
+    } catch { return ''; }
+  });
   const [projectTasks, setProjectTasks] = useState<ProjectTask[]>(() => {
-    const saved = localStorage.getItem('odyssey_project_tasks');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = localStorage.getItem('odyssey_project_tasks');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
   });
   const [roadmap, setRoadmap] = useState(() => {
     try {
       const saved = localStorage.getItem('odyssey_roadmap');
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Structural Validation: Ensure data is an array and handle expansion
         if (Array.isArray(parsed)) {
           if (parsed.length < 12) return INITIAL_ROADMAP;
           return parsed;
         }
       }
-    } catch (e) {
-      console.error("DATA_SYNC_FAILED: FALLING_BACK_TO_DEFAULT");
-    }
+    } catch (e) { console.error("SYNC_ERROR: ROADMAP"); }
     return INITIAL_ROADMAP;
   });
-  const [xp, setXp] = useState(() => Number(localStorage.getItem('odyssey_xp')) || 45200);
-  const [projectNotes, setProjectNotes] = useState<string>(() => localStorage.getItem('odyssey_project_notes') || '');
+  const [xp, setXp] = useState(() => {
+    try {
+      return Number(localStorage.getItem('odyssey_xp')) || 45200;
+    } catch { return 45200; }
+  });
+  const [projectNotes, setProjectNotes] = useState<string>(() => {
+    try {
+      return localStorage.getItem('odyssey_project_notes') || '';
+    } catch { return ''; }
+  });
   const [systemLogs, setSystemLogs] = useState<{ id: string; text: string; type: 'info' | 'warn' | 'success'; timestamp: string }[]>(() => {
-    const saved = localStorage.getItem('odyssey_system_logs');
-    return saved ? JSON.parse(saved) : [{ id: 'init', text: 'SYSTEM_INITIALIZED: ARCHITECT_LINK_ESTABLISHED', type: 'success', timestamp: new Date().toLocaleTimeString() }];
+    try {
+      const saved = localStorage.getItem('odyssey_system_logs');
+      return saved ? JSON.parse(saved) : [{ id: 'init', text: 'SYSTEM_INITIALIZED: ARCHITECT_LINK_ESTABLISHED', type: 'success', timestamp: new Date().toLocaleTimeString() }];
+    } catch { return [{ id: 'init', text: 'SYSTEM_RECOVERY: LOADED_DEFAULT', type: 'success', timestamp: new Date().toLocaleTimeString() }]; }
   });
   const [completedDays, setCompletedDays] = useState<Record<string, number[]>>(() => {
-    const saved = localStorage.getItem('odyssey_completed_days');
-    return saved ? JSON.parse(saved) : { 'm0': [1] };
+    try {
+      const saved = localStorage.getItem('odyssey_completed_days');
+      return saved ? JSON.parse(saved) : { 'm0': [1] };
+    } catch { return { 'm0': [1] }; }
   });
 
   const [showXpAlert, setShowXpAlert] = useState(false);
   const [isAntigravity, setIsAntigravity] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [neuralIntensity, setNeuralIntensity] = useState(() => Number(localStorage.getItem('odyssey_neural_intensity')) || 50);
+  const [neuralIntensity, setNeuralIntensity] = useState(() => {
+    try {
+      return Number(localStorage.getItem('odyssey_neural_intensity')) || 50;
+    } catch { return 50; }
+  });
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [isSurge, setIsSurge] = useState(false);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => localStorage.getItem('odyssey_sidebar_collapsed') === 'true');
-  const [deepWork, setDeepWork] = useState(() => localStorage.getItem('odyssey_deep_work') === 'true');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('odyssey_sidebar_collapsed') === 'true';
+    } catch { return false; }
+  });
+  const [deepWork, setDeepWork] = useState(() => {
+    try {
+      return localStorage.getItem('odyssey_deep_work') === 'true';
+    } catch { return false; }
+  });
 
   // Navigation Deep-Linking
-  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(() => localStorage.getItem('odyssey_selected_module') || null);
-  const [selectedDayNumber, setSelectedDayNumber] = useState<number>(() => Number(localStorage.getItem('odyssey_selected_day')) || 1);
+  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem('odyssey_selected_module') || null;
+    } catch { return null; }
+  });
+  const [selectedDayNumber, setSelectedDayNumber] = useState<number>(() => {
+    try {
+      return Number(localStorage.getItem('odyssey_selected_day')) || 1;
+    } catch { return 1; }
+  });
 
   // Singularity Pass: Ambient Audio Ref
   const ambientRef = useRef<HTMLAudioElement | null>(null);
