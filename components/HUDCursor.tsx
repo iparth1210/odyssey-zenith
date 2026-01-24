@@ -11,8 +11,10 @@ const HudCursor: React.FC = () => {
             setPosition({ x: e.clientX, y: e.clientY });
 
             const target = e.target as HTMLElement;
+            if (!target) return;
+
             // Enhanced detection for interactive elements including Recharts components
-            const hoverable = target.closest('button, a, input, [role="button"], .recharts-sector, .recharts-dot, .recharts-rectangle, [style*="cursor: pointer"]');
+            const hoverable = target.closest?.('button, a, input, [role="button"], .recharts-sector, .recharts-dot, .recharts-rectangle, [style*="cursor: pointer"]');
             setIsHovering(!!hoverable);
         };
 

@@ -28,14 +28,18 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : [];
   });
   const [roadmap, setRoadmap] = useState(() => {
-    const saved = localStorage.getItem('odyssey_roadmap');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Migration Layer: If user has old 2-month prototype, upgrade them to ZENITH 12-month expansion
-      if (Array.isArray(parsed) && parsed.length < 12) {
-        return INITIAL_ROADMAP;
+    try {
+      const saved = localStorage.getItem('odyssey_roadmap');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        // Structural Validation: Ensure data is an array and handle expansion
+        if (Array.isArray(parsed)) {
+          if (parsed.length < 12) return INITIAL_ROADMAP;
+          return parsed;
+        }
       }
-      return parsed;
+    } catch (e) {
+      console.error("DATA_SYNC_FAILED: FALLING_BACK_TO_DEFAULT");
     }
     return INITIAL_ROADMAP;
   });
@@ -236,7 +240,7 @@ const App: React.FC = () => {
   return (
     <div
       className={`flex min-h-screen bg-[#020617] text-slate-100 overflow-hidden relative font-['Outfit'] transition-all duration-300 ${deepWork ? 'deep-work-active' : ''} ${isSurge ? 'surge-active' : ''}`}
-      style={{ filter: isSurge ? 'url(#pulse-displacement) url(#neural-lens)' : 'url(#neural-lens)' }}
+      style={{ filter: isSurge ? 'url(#pulse-displacement) url(#neural-lens)' : 'none' }}
     >
       {/* Singularity Pulse Effect */}
       {isSurge && <div className="singularity-pulse"></div>}
