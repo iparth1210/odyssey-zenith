@@ -21,13 +21,33 @@ const generateMonthDays = (month: number, theme: string): DailyTask[] => {
       imageUrl: "https://images.unsplash.com/photo-1518433278988-78ef99ea0524?auto=format&fit=crop&q=80&w=800"
     }],
     resources: [
-      { type: 'video', label: `Mastering ${theme} Layer`, url: 'https://www.youtube.com/', difficulty: 'Intermediate', duration: '12:45', provider: 'Odyssey Intelligence' }
+      {
+        type: 'video',
+        label: `Explore: ${theme} Concepts`,
+        url: `https://www.youtube.com/results?search_query=mastering+${theme.replace(' ', '+')}+programming+tutorial`,
+        difficulty: 'Intermediate',
+        duration: 'Multiple',
+        provider: 'YouTube Search'
+      },
+      {
+        type: 'article',
+        label: `${theme} Documentation`,
+        url: `https://duckduckgo.com/?q=${theme.replace(' ', '+')}+documentation+best+practices`,
+        difficulty: 'Advanced',
+        duration: 'Read',
+        provider: 'Web Search'
+      }
     ],
     quiz: {
-      question: `What is the primary constraint of the ${theme} interface in this sequence?`,
-      options: ["Latency sync", "Logical state", "Physical heat", "Data density"],
+      question: `Critical Thinking: How does ${theme} impact system scalability?`,
+      options: [
+        `It reduces latency by optimizing ${theme} calls`,
+        "It increases caloric intake of the developer",
+        "It requires a quantum computer",
+        "It has no impact on performance"
+      ],
       correctIndex: 0,
-      explanation: "Latency synchronization is the ultimate goal of high-fidelity architectural units."
+      explanation: `Optimizing the ${theme} layer is critical for reducing overhead and ensuring the system can handle increased load without linear resource scaling.`
     }
   }));
 };
@@ -46,7 +66,16 @@ const generatePlaceholderDays = (month: number, startDay: number, count: number)
       description: "Unit decoding in progress...",
       imageUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
     }],
-    resources: []
+    resources: [
+      {
+        type: 'video',
+        label: 'Concept Deep Dive',
+        url: `https://www.youtube.com/results?search_query=advanced+computer+science+concepts+part+${startDay + i}`,
+        difficulty: 'Advanced',
+        duration: 'Self-Paced',
+        provider: 'Deep Web'
+      }
+    ]
   }));
 };
 
@@ -171,7 +200,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'API design.',
     topics: ['TCP/IP', 'HTTP/3', 'WebSockets'],
     skills: ['Networking', 'Protocols'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1558494949-ef0109556754?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(2, "Network Protocol"),
     masteryProject: { title: 'Protocol Pioneer', description: 'Build a TCP chat application.' },
@@ -188,7 +217,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Scalable data systems.',
     topics: ['SQL', 'NoSQL', 'Indexing'],
     skills: ['Database', 'Optimization'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(3, "Data Management"),
     masteryProject: { title: 'Data Architect', description: 'Design an e-commerce schema.' },
@@ -205,7 +234,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Responsive web engineering.',
     topics: ['HTML5', 'CSS Grid', 'Animation'],
     skills: ['Frontend', 'UI/UX'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(4, "UI Engineering"),
     masteryProject: { title: 'Pixel Perfect', description: 'Clone a professional landing page.' },
@@ -222,7 +251,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Interactive applications.',
     topics: ['ES6+', 'Async/Await', 'Closures'],
     skills: ['JavaScript', 'Logic'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(5, "JS Engine"),
     masteryProject: { title: 'JS Mastery', description: 'Build a custom Promise.' },
@@ -239,7 +268,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Modern SPA development.',
     topics: ['Hooks', 'State', 'Context'],
     skills: ['React', 'Architecture'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(6, "React Framework"),
     masteryProject: { title: 'React Architect', description: 'Build a Kanban board.' },
@@ -256,7 +285,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'REST APIs & Microservices.',
     topics: ['Express', 'Middleware', 'Auth'],
     skills: ['Node.js', 'Backend'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(7, "Backend Logic"),
     masteryProject: { title: 'API Architect', description: 'Build an Auth system.' },
@@ -273,7 +302,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Scalable software engineering.',
     topics: ['Types', 'Interfaces', 'Generics'],
     skills: ['TypeScript', 'Safety'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(8, "Type Systems"),
     masteryProject: { title: 'Type Master', description: 'Migrate a JS app to TS.' },
@@ -290,7 +319,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Reliable deployment.',
     topics: ['Unit', 'E2E', 'TDD'],
     skills: ['QA', 'Reliability'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1576444356170-66073046b1bc?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(9, "Software Testing"),
     masteryProject: { title: 'Test Champion', description: 'Achieve 95% coverage.' },
@@ -307,7 +336,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Continuous integration.',
     topics: ['Docker', 'AWS', 'Actions'],
     skills: ['Cloud', 'DevOps'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(10, "DevOps Mastery"),
     masteryProject: { title: 'DevOps Engineer', description: 'Build a full pipeline.' },
@@ -324,7 +353,7 @@ export const INITIAL_ROADMAP: RoadmapModule[] = [
     practicalUsage: 'Elite platform engineering.',
     topics: ['Caching', 'Microservices', 'Load Sync'],
     skills: ['Architecture', 'Scale'],
-    status: ModuleStatus.LOCKED,
+    status: ModuleStatus.CURRENT,
     previewImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
     dailySchedule: generateMonthDays(11, "Global Systems"),
     masteryProject: { title: 'Scale Architect', description: 'Deploy global infrastructure.' },

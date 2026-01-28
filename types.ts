@@ -62,6 +62,7 @@ export interface RoadmapModule {
     title: string;
     description: string;
   };
+  progress?: number;
 }
 
 export interface ProjectTask {
