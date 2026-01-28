@@ -42,7 +42,7 @@ const App: React.FC = () => {
   });
   const [roadmap, setRoadmap] = useState(() => {
     try {
-      const saved = localStorage.getItem('odyssey_roadmap');
+      const saved = localStorage.getItem('odyssey_roadmap_v3_1');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed)) {
@@ -128,7 +128,7 @@ const App: React.FC = () => {
     localStorage.setItem('odyssey_active_tab', activeTab);
     localStorage.setItem('odyssey_project_idea', projectIdea);
     localStorage.setItem('odyssey_project_tasks', JSON.stringify(projectTasks));
-    localStorage.setItem('odyssey_roadmap', JSON.stringify(roadmap));
+    localStorage.setItem('odyssey_roadmap_v3_1', JSON.stringify(roadmap));
     localStorage.setItem('odyssey_xp', xp.toString());
     localStorage.setItem('odyssey_neural_intensity', neuralIntensity.toString());
     localStorage.setItem('odyssey_project_notes', projectNotes);
