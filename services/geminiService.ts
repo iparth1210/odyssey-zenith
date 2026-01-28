@@ -8,7 +8,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
  */
 export const getVoiceBriefing = async (text: string) => {
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash-preview-tts",
+    model: "gemini-1.5-flash",
     contents: [{ parts: [{ text: `Explain this tech lesson concisely and professionally like a senior engineer: ${text}` }] }],
     config: {
       responseModalities: [Modality.AUDIO],
@@ -30,7 +30,7 @@ export const getVoiceBriefing = async (text: string) => {
  */
 export const generateProjectBlueprint = async (idea: string, style: string = 'blueprint') => {
   const response = await ai.models.generateContent({
-    model: 'gemini-2.5-flash-image',
+    model: 'gemini-1.5-flash',
     contents: {
       parts: [
         {
@@ -56,19 +56,20 @@ export const generateProjectBlueprint = async (idea: string, style: string = 'bl
   return null;
 };
 
-export const getMentorResponseStream = async (prompt: string, context: string, onChunk: (text: string) => void) => {
+export const getMentorResponseStream = async (prompt: string, context: string, personality: string, onChunk: (text: string) => void) => {
   const response = await ai.models.generateContentStream({
-    model: 'gemini-3-pro-preview',
+    model: 'gemini-1.5-flash',
     contents: prompt,
     config: {
-      systemInstruction: `You are the Lead Architect Mentor. 
+      systemInstruction: `You are the ${personality} Mentor. 
       The student is on a high-stakes journey to full-stack mastery. 
       Context: ${context}.
-      Response Style:
-      1. Use technical precision mixed with inspiring metaphors.
-      2. Provide production-grade code snippets.
-      3. Challenge the student's assumptions.
-      4. Always explain the architectural "Why".`
+      Response Style for "${personality}":
+      - Architect: Use technical precision, global system metaphors, and explain the architectural "Why".
+      - Elite Hacker: Be concise, emphasize efficiency, use security-focused jargon, and focus on "Breaking and Building".
+      - Zen Master: Use calm, philosophical analogies, emphasize simplicity, and focus on "The Art of Code".
+      
+      Always provide production-grade code snippets when applicable.`
     }
   });
 
@@ -85,7 +86,7 @@ export const getMentorResponseStream = async (prompt: string, context: string, o
 
 export const generateProjectTasks = async (projectIdea: string, currentMonth: number) => {
   const response = await ai.models.generateContent({
-    model: 'gemini-3-pro-preview',
+    model: 'gemini-1.5-flash',
     contents: `Project: "${projectIdea}". Month: ${currentMonth}. Suggest 5 fundamental engineering tasks.`,
     config: {
       responseMimeType: "application/json",

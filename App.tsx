@@ -7,9 +7,8 @@ import MentorChat from './components/MentorChat';
 import Stats from './components/Stats';
 import AntigravityPortal from './components/AntigravityPortal';
 import CommandPalette from './components/CommandPalette';
-import HUDCursor from './components/HUDCursor';
-import ParallaxBackground from './components/ParallaxBackground';
 import NeuralGrid from './components/NeuralGrid';
+import ParallaxBackground from './components/ParallaxBackground';
 import { INITIAL_ROADMAP } from './constants';
 import { ProjectTask } from './types';
 
@@ -86,7 +85,6 @@ const App: React.FC = () => {
     } catch { return 50; }
   });
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
-  const [isSurge, setIsSurge] = useState(false);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
     try {
@@ -158,8 +156,6 @@ const App: React.FC = () => {
       addSystemLog(`INTERFACE_SHIFT: NAVIGATED_TO_${activeTab.toUpperCase()}`, 'info');
 
       // Trigger Neural Shiver Haptic
-      setIsSurge(true);
-      setTimeout(() => setIsSurge(false), 300);
 
       setLastTab(activeTab);
     }
@@ -215,8 +211,6 @@ const App: React.FC = () => {
     setShowXpAlert(true);
 
     // Trigger Neural Surge Haptic
-    setIsSurge(true);
-    setTimeout(() => setIsSurge(false), 800);
 
     // Play Singularity Surge Sound
     const surge = new Audio('data:audio/mp3;base64,SUQzBAAAAAABAFRYWFgAAAASAAADbWFqb3JfYnJhbmQAZGFzaABUWFhYAAAAEgAAA21pbm9yX3ZlcnNpb24AMABUWFhYAAAAHAAAA2NvbXBhdGlibGVfYnJhbmRzAGlzbzZtcDQxAFRTU0UAAAAPAAADTGF2ZjYwLjMuMTAwAAAAAAAAAAAAAAD/+00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+00fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+00fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
@@ -282,11 +276,8 @@ const App: React.FC = () => {
 
   return (
     <div
-      className={`flex min-h-screen bg-[#020617] text-slate-100 overflow-hidden relative font-['Outfit'] transition-all duration-300 ${deepWork ? 'deep-work-active' : ''} ${isSurge ? 'surge-active' : ''}`}
-      style={{ filter: isSurge ? 'url(#pulse-displacement) url(#neural-lens)' : 'none' }}
+      className={`flex min-h-screen bg-[#020617] text-slate-100 overflow-hidden relative font-['Outfit'] transition-all duration-300 ${deepWork ? 'deep-work-active' : ''}`}
     >
-      {/* Singularity Pulse Effect */}
-      {isSurge && <div className="singularity-pulse"></div>}
 
       {/* Elite Parallax Background */}
       <ParallaxBackground mouseX={parallax.x} mouseY={parallax.y} />
@@ -350,12 +341,8 @@ const App: React.FC = () => {
         )
       }
 
-      {/* Tab Glitch Flash Overlay */}
-      {isSurge && (
-        <div className="fixed inset-0 z-[150] bg-white opacity-[0.03] pointer-events-none mix-blend-overlay animate-flicker"></div>
-      )}
 
-      <main className={`flex-1 min-w-0 relative h-screen flex flex-col overflow-hidden transition-all duration-500 ${sidebarCollapsed ? 'ml-0' : (deepWork ? 'lg:ml-20' : 'lg:ml-72')} ${isSurge ? 'animate-haptic' : ''}`}>
+      <main className={`flex-1 min-w-0 relative h-screen flex flex-col overflow-hidden transition-all duration-500 ${sidebarCollapsed ? 'ml-0' : (deepWork ? 'lg:ml-20' : 'lg:ml-72')}`}>
         {/* Cinematic Mastery Notification */}
         {showXpAlert && (
           <div className="fixed top-12 left-1/2 -translate-x-1/2 z-[110] px-10 py-5 bg-indigo-600/30 backdrop-blur-3xl rounded-[32px] shadow-[0_20px_60px_rgba(79,70,229,0.4)] border border-white/20 animate-in fade-in slide-in-from-top-full duration-700 ease-out">
@@ -459,7 +446,6 @@ const App: React.FC = () => {
         }}
       />
 
-      <HUDCursor />
 
       {/* Synaptic Overlay Protocol */}
       {synapticActive && (

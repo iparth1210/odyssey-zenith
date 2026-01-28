@@ -77,7 +77,30 @@ const Roadmap: React.FC<RoadmapProps> = ({
   const [shakeQuiz, setShakeQuiz] = useState(false);
   const [completing, setCompleting] = useState(false);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
+  const [showModuleDropdown, setShowModuleDropdown] = useState(false);
+  const [showDayDropdown, setShowDayDropdown] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const contentContainerRef = useRef<HTMLDivElement>(null);
+  const moduleBtnRef = useRef<HTMLButtonElement>(null);
+  const dayBtnRef = useRef<HTMLButtonElement>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (moduleBtnRef.current && !moduleBtnRef.current.contains(event.target as Node)) {
+        setShowModuleDropdown(false);
+      }
+      if (dayBtnRef.current && !dayBtnRef.current.contains(event.target as Node)) {
+        setShowDayDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const el = e.currentTarget;
@@ -111,6 +134,10 @@ const Roadmap: React.FC<RoadmapProps> = ({
         top: 0,
         behavior: 'smooth'
       });
+    }
+    // Close nav on mobile/compact when day changes
+    if (window.innerWidth < 1280) {
+      setIsNavOpen(false);
     }
   }, [selectedModuleId, selectedDayNumber]);
 
@@ -165,38 +192,31 @@ const Roadmap: React.FC<RoadmapProps> = ({
   if (!activeModule) return null;
 
   return (
-    <div className="flex h-full bg-slate-950/20 backdrop-blur-md font-['Outfit']">
-
-      {/* Video Overlay */}
-      {activeVideo && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-3xl transition-all duration-500">
-          <button onClick={() => { setActiveVideo(null); setIsVideoLoading(true); }} className="absolute top-8 right-8 text-white p-4 bg-white/5 rounded-full hover:scale-110 transition-transform active:scale-95 z-[110]">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
-          <div className="w-full max-w-5xl aspect-video rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(99,102,241,0.2)] animate-in zoom-in-95 duration-300 relative bg-slate-900">
-            {isVideoLoading && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6">
-                <div className="w-20 h-20 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
-                <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.4em] animate-pulse">Establishing Nexus Link...</p>
-              </div>
-            )}
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
-              frameBorder="0"
-              allowFullScreen
-              onLoad={() => setIsVideoLoading(false)}
-              className={`transition-opacity duration-1000 ${isVideoLoading ? 'opacity-0' : 'opacity-100'}`}
-            ></iframe>
-          </div>
-        </div>
+    <div className="flex h-full bg-slate-950/20 backdrop-blur-md font-['Outfit'] relative overflow-hidden">
+      {/* Drawer Overlay/Backdrop */}
+      {isNavOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[40] xl:hidden animate-in fade-in duration-500"
+          onClick={() => setIsNavOpen(false)}
+        />
       )}
 
-      {/* PRO Compact Navigation Bar */}
-      <div className="w-[280px] 2xl:w-[320px] premium-glass border-r border-white/5 flex flex-col shrink-0 overflow-hidden">
+      {/* Floating Trigger Button */}
+      <button
+        onClick={() => setIsNavOpen(!isNavOpen)}
+        className={`fixed left-8 top-1/2 -translate-y-1/2 z-[50] w-14 h-24 premium-glass border-white/10 rounded-2xl flex items-center justify-center text-indigo-400 hover:text-white hover:bg-white/10 transition-all duration-500 group shadow-2xl ${isNavOpen ? 'translate-x-[260px] 2xl:translate-x-[300px] rotate-180' : 'translate-x-0'}`}
+        title={isNavOpen ? "Collapse Navigation" : "Expand Navigation"}
+      >
+        <div className="absolute inset-0 bg-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <svg className="w-6 h-6 transform group-hover:scale-125 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* PRO Compact Navigation Drawer */}
+      <div className={`fixed inset-y-0 left-0 w-[280px] 2xl:w-[320px] bg-[#020617]/95 backdrop-blur-3xl border-r border-white/10 flex flex-col shrink-0 z-[45] transition-transform duration-700 ease-in-out shadow-[40px_0_100px_rgba(0,0,0,0.8)] ${isNavOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Module Selector Header */}
-        <div className="p-6 border-b border-white/5 relative">
+        <div className="p-8 border-b border-white/10 relative bg-white/[0.02]">
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <span className="text-[8px] font-black text-slate-600 uppercase tracking-[0.4em] block mb-1">Active Stream</span>
@@ -204,44 +224,45 @@ const Roadmap: React.FC<RoadmapProps> = ({
             </div>
             <div className="relative">
               <button
-                onClick={() => {
-                  const dropdown = document.getElementById('module-dropdown');
-                  dropdown?.classList.toggle('hidden');
-                }}
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all active:scale-95"
+                ref={moduleBtnRef}
+                onClick={() => setShowModuleDropdown(!showModuleDropdown)}
+                className={`w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all active:scale-95 ${showModuleDropdown ? 'bg-indigo-500/20 border-indigo-500/40 text-white' : ''}`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="4" r="2" /><circle cx="10" cy="10" r="2" /><circle cx="10" cy="16" r="2" /></svg>
               </button>
 
               {/* Module Dropdown */}
-              <div id="module-dropdown" className="hidden absolute top-full right-0 mt-2 w-80 premium-glass border border-white/10 rounded-2xl shadow-2xl z-50 p-2 max-h-96 overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-top-2 duration-200">
-                {modules.map(mod => {
-                  const isSelected = selectedModuleId === mod.id;
-                  const isLocked = mod.status === ModuleStatus.LOCKED;
-                  return (
-                    <button
-                      key={mod.id}
-                      disabled={isLocked}
-                      onClick={() => {
-                        setSelectedModuleId(mod.id);
-                        setSelectedDayNumber(1);
-                        document.getElementById('module-dropdown')?.classList.add('hidden');
-                      }}
-                      className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-2 ${isSelected
-                        ? 'bg-indigo-500/20 text-white'
-                        : isLocked
-                          ? 'opacity-30 cursor-not-allowed text-slate-500'
-                          : 'text-slate-400 hover:bg-white/5 hover:text-white'
-                        }`}
-                    >
-                      <span className="text-[8px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded shrink-0">{mod.month.toString().padStart(2, '0')}</span>
-                      <span className="text-[10px] font-bold truncate flex-1">{mod.title}</span>
-                      {isSelected && <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></div>}
-                    </button>
-                  );
-                })}
-              </div>
+              {isMounted && showModuleDropdown && (
+                <div className="absolute top-full right-0 mt-2 w-80 premium-glass border border-white/10 rounded-2xl shadow-2xl z-50 p-2 max-h-96 overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-top-2 duration-200">
+                  {modules.map(mod => {
+                    const isSelected = selectedModuleId === mod.id;
+                    const isLocked = mod.status === ModuleStatus.LOCKED;
+                    return (
+                      <button
+                        key={mod.id}
+                        disabled={isLocked}
+                        onClick={() => {
+                          setSelectedModuleId(mod.id);
+                          setSelectedDayNumber(1);
+                          setShowModuleDropdown(false);
+                        }}
+                        className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center gap-2 ${isSelected
+                          ? 'bg-indigo-500/20 text-white'
+                          : isLocked
+                            ? 'opacity-30 cursor-not-allowed text-slate-500'
+                            : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                          }`}
+                      >
+                        <span className="text-[8px] font-mono text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded shrink-0">{mod.month.toString().padStart(2, '0')}</span>
+                        <span className="text-[10px] font-bold truncate flex-1">{mod.title}</span>
+                        {isSelected && <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full shrink-0"></div>}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
+
           </div>
 
           {/* Progress Bar */}
@@ -254,7 +275,7 @@ const Roadmap: React.FC<RoadmapProps> = ({
         </div>
 
         {/* Compact Day Selector with 3-Dot Dropdown */}
-        <div className="p-4 border-b border-white/5">
+        <div className="p-8 border-b border-white/10 bg-white/[0.01]">
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <span className="text-[8px] font-black text-slate-600 uppercase tracking-[0.4em] block mb-1">Active Day</span>
@@ -265,46 +286,47 @@ const Roadmap: React.FC<RoadmapProps> = ({
             </div>
             <div className="relative">
               <button
-                onClick={() => {
-                  const dropdown = document.getElementById('day-dropdown');
-                  dropdown?.classList.toggle('hidden');
-                }}
-                className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all active:scale-95"
+                ref={dayBtnRef}
+                onClick={() => setShowDayDropdown(!showDayDropdown)}
+                className={`w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all active:scale-95 ${showDayDropdown ? 'bg-indigo-500/20 border-indigo-500/40 text-white' : ''}`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="4" r="2" /><circle cx="10" cy="10" r="2" /><circle cx="10" cy="16" r="2" /></svg>
               </button>
 
               {/* Vertical Day Dropdown */}
-              <div id="day-dropdown" className="hidden absolute top-full right-0 mt-2 w-48 premium-glass border border-white/10 rounded-2xl shadow-2xl z-50 p-2 max-h-72 overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="grid grid-cols-4 gap-1">
-                  {activeModule.dailySchedule?.map(day => {
-                    const isSelected = selectedDayNumber === day.day;
-                    const isCompleted = completedDays[selectedModuleId || '']?.includes(day.day);
-                    return (
-                      <button
-                        key={day.day}
-                        onClick={() => {
-                          setSelectedDayNumber(day.day);
-                          setQuizAnswer(null);
-                          setShowExplanation(false);
-                          setActiveMode('theory');
-                          document.getElementById('day-dropdown')?.classList.add('hidden');
-                        }}
-                        className={`w-full aspect-square rounded-lg flex items-center justify-center text-[11px] font-black transition-all relative ${isSelected
-                          ? 'bg-indigo-500 text-white'
-                          : isCompleted
-                            ? 'bg-emerald-500/20 text-emerald-400'
-                            : 'bg-white/5 text-slate-500 hover:bg-white/10 hover:text-white'
-                          }`}
-                      >
-                        {day.day}
-                        {isCompleted && !isSelected && <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>}
-                      </button>
-                    );
-                  })}
+              {isMounted && showDayDropdown && (
+                <div className="absolute top-full right-0 mt-2 w-48 premium-glass border border-white/10 rounded-2xl shadow-2xl z-50 p-2 max-h-72 overflow-y-auto scrollbar-hide animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="grid grid-cols-4 gap-1">
+                    {activeModule.dailySchedule?.map(day => {
+                      const isSelected = selectedDayNumber === day.day;
+                      const isCompleted = completedDays[selectedModuleId || '']?.includes(day.day);
+                      return (
+                        <button
+                          key={day.day}
+                          onClick={() => {
+                            setSelectedDayNumber(day.day);
+                            setQuizAnswer(null);
+                            setShowExplanation(false);
+                            setActiveMode('theory');
+                            setShowDayDropdown(false);
+                          }}
+                          className={`w-full aspect-square rounded-lg flex items-center justify-center text-[11px] font-black transition-all relative ${isSelected
+                            ? 'bg-indigo-500 text-white'
+                            : isCompleted
+                              ? 'bg-emerald-500/20 text-emerald-400'
+                              : 'bg-white/5 text-slate-500 hover:bg-white/10 hover:text-white'
+                            }`}
+                        >
+                          {day.day}
+                          {isCompleted && !isSelected && <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
+
           </div>
 
           {/* Compact Progress Indicator */}
@@ -320,7 +342,7 @@ const Roadmap: React.FC<RoadmapProps> = ({
         </div>
 
         {/* Quick Info Panel */}
-        <div className="flex-1 p-4 overflow-y-auto scrollbar-hide">
+        <div className="flex-1 p-8 overflow-y-auto scrollbar-hide bg-slate-950/20">
           <div className="space-y-4">
             <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/5">
               <h5 className="text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] mb-2">Current Focus</h5>
@@ -342,7 +364,32 @@ const Roadmap: React.FC<RoadmapProps> = ({
       </div>
 
       {/* Content Engine */}
-      <div className="flex-1 flex overflow-hidden bg-[#020617]/60">
+      <div className={`flex-1 flex overflow-hidden bg-[#020617]/60 transition-all duration-700 ${isNavOpen ? 'xl:pl-[280px] 2xl:pl-[320px]' : 'pl-0'}`}>
+        {/* Video Overlay */}
+        {activeVideo && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/95 backdrop-blur-3xl transition-all duration-500">
+            <button onClick={() => { setActiveVideo(null); setIsVideoLoading(true); }} className="absolute top-8 right-8 text-white p-4 bg-white/5 rounded-full hover:scale-110 transition-transform active:scale-95 z-[110]">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <div className="w-full max-w-5xl aspect-video rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(99,102,241,0.2)] animate-in zoom-in-95 duration-300 relative bg-slate-900">
+              {isVideoLoading && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-6">
+                  <div className="w-20 h-20 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
+                  <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.4em] animate-pulse">Initializing Interface...</p>
+                </div>
+              )}
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1`}
+                frameBorder="0"
+                allowFullScreen
+                onLoad={() => setIsVideoLoading(false)}
+                className={`transition-opacity duration-1000 ${isVideoLoading ? 'opacity-0' : 'opacity-100'}`}
+              ></iframe>
+            </div>
+          </div>
+        )}
         <div
           ref={contentContainerRef}
           className="flex-1 overflow-y-auto px-8 lg:px-16 py-16 scrollbar-hide relative"
@@ -353,7 +400,7 @@ const Roadmap: React.FC<RoadmapProps> = ({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-3 premium-glass pl-2 pr-4 py-1.5 rounded-full border-white/10 shadow-xl">
                     <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(99,102,241,1)]"></div>
-                    <span className="text-[10px] font-black text-indigo-300 uppercase tracking-[0.2em]">Synapse Layer {activeModule.month}.{activeDay.day.toString().padStart(2, '0')}</span>
+                    <span className="text-[10px] font-black text-indigo-300 uppercase tracking-[0.2em]">Learning Stream {activeModule.month}.{activeDay.day.toString().padStart(2, '0')}</span>
                   </div>
                   <button
                     onClick={handlePlayBriefing}
@@ -436,19 +483,6 @@ const Roadmap: React.FC<RoadmapProps> = ({
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent"></div>
 
-                      {/* Scanning Line Animation */}
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent animate-scan z-20"></div>
-
-                      {/* Decorative HUD Elements */}
-                      <div className="absolute top-10 left-10 text-[8px] font-mono text-indigo-500/40 uppercase tracking-[0.5em] hidden lg:block">
-                        COORD_REF: {Math.random().toFixed(4)}N / {Math.random().toFixed(4)}E
-                      </div>
-                      <div className="absolute top-10 right-10 text-[8px] font-mono text-indigo-500/40 uppercase tracking-[0.5em] hidden lg:block">
-                        DATA_STREAM: [STABLE]
-                      </div>
-                      <div className="absolute bottom-10 right-10 text-[8px] font-mono text-indigo-500/40 uppercase tracking-[0.5em] hidden lg:block">
-                        SIG_SECURE: YES
-                      </div>
                     </div>
 
                     <div className="relative z-10 space-y-12 max-w-3xl">
@@ -507,7 +541,7 @@ const Roadmap: React.FC<RoadmapProps> = ({
                   <div className={`premium-glass border-white/10 p-16 lg:p-24 rounded-[60px] space-y-20 shadow-4xl backdrop-blur-3xl animate-in fade-in slide-in-from-top-12 duration-1000 ${shakeQuiz ? 'animate-shake' : ''}`}>
                     <div className="space-y-6 flex flex-col md:flex-row md:items-end justify-between gap-10">
                       <div className="space-y-6 max-w-2xl">
-                        <span className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.6em]">System Verification Pulse</span>
+                        <span className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.6em]">Knowledge Verification</span>
                         <h3 className="text-5xl font-black text-white tracking-tighter leading-[1.1]">{activeDay.quiz.question}</h3>
                       </div>
                       {showExplanation && (
@@ -607,7 +641,7 @@ const Roadmap: React.FC<RoadmapProps> = ({
         <div className="w-[300px] 2xl:w-[360px] premium-glass border-l border-white/5 p-6 lg:p-8 overflow-y-auto scrollbar-hide hidden xl:block shrink-0 shadow-[-20px_0_60px_rgba(0,0,0,0.5)] z-10">
           <div className="space-y-10">
             <header className="flex items-center justify-between">
-              <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Strategic Assets</h4>
+              <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Learning Assets</h4>
               <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(99,102,241,1)]"></div>
             </header>
 

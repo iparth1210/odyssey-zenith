@@ -348,7 +348,7 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
                     <input
                       type="text"
                       placeholder="INJECT NEW ARCHITECTURAL NODE..."
-                      className="bg-transparent border-none outline-none text-2xl font-black text-white placeholder:text-slate-800 flex-1 input-glitch-focus"
+                      className="bg-transparent border-none outline-none text-2xl font-black text-white placeholder:text-slate-800 flex-1"
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' && e.currentTarget.value.trim()) {
                           const newTask: ProjectTask = {
@@ -398,13 +398,13 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
             <div className="lg:col-span-4 space-y-16">
               <div className="bg-slate-950/90 border border-white/10 rounded-[72px] p-16 h-[900px] flex flex-col shadow-4xl backdrop-blur-3xl relative overflow-hidden group/kernel">
                 {/* Advanced Scanline & Flicker VFX */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(0,255,100,0.03),rgba(0,255,200,0.02),rgba(0,100,255,0.03))] z-0 pointer-events-none bg-[length:100%_2px,2px_100%] animate-flicker"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(99,102,241,0.02),rgba(34,211,238,0.01),rgba(99,102,241,0.02))] z-0 pointer-events-none bg-[length:100%_2px,2px_100%]"></div>
                 <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent animate-scan z-20 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
 
                 <header className="flex items-center justify-between mb-12 relative z-10 px-2">
                   <div className="flex items-center space-x-5">
                     <div className="w-4 h-4 rounded-full bg-rose-500 animate-pulse shadow-[0_0_10px_rose]"></div>
-                    <h4 className="text-[12px] font-black text-indigo-400 uppercase tracking-[0.5em] drop-shadow-[0_0_8px_indigo]">Kernel Flow</h4>
+                    <h4 className="text-[12px] font-black text-indigo-400 uppercase tracking-[0.5em] drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]">Terminal Output</h4>
                   </div>
                   <div className="flex items-center space-x-3">
                     <span className="text-[9px] font-mono text-slate-600 font-black tracking-widest">ENCRYPTED</span>
@@ -415,7 +415,7 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
                 <div className="flex-1 font-mono text-[11px] space-y-5 overflow-y-auto scrollbar-hide relative z-10 pr-2">
                   <div className="terminal-scroll space-y-5">
                     {logs.map((log) => (
-                      <div key={log.id} className={`flex space-x-5 animate-in slide-in-from-bottom-2 fade-in duration-300 ${log.type === 'success' ? 'text-emerald-400 text-glow-emerald' : log.type === 'warn' ? 'text-rose-400 text-glow-rose' : 'text-slate-500'}`}>
+                      <div key={log.id} className={`flex space-x-5 animate-in slide-in-from-bottom-2 fade-in duration-300 ${log.type === 'success' ? 'text-emerald-400' : log.type === 'warn' ? 'text-rose-400' : 'text-slate-500'}`}>
                         <span className="opacity-10 text-[9px] mt-0.5 tracking-tighter">[{log.timestamp}]</span>
                         <p className="flex-1 leading-relaxed tracking-tight group-hover/kernel:text-slate-300 transition-colors font-mono">{log.text}</p>
                       </div>

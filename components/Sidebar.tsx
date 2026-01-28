@@ -27,10 +27,22 @@ const Sidebar: React.FC<SidebarProps> = ({
   const [hoveredItem, setHoveredItem] = React.useState<NavItem | null>(null);
   const [isMounted, setIsMounted] = React.useState(false);
   const [activeMenu, setActiveMenu] = React.useState<string | null>(null);
+  const sidebarRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
 
   const items: { id: NavItem; label: string; icon: string }[] = [
     { id: 'roadmap', label: 'Roadmap', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
@@ -43,7 +55,8 @@ const Sidebar: React.FC<SidebarProps> = ({
   const hoveredIndex = items.findIndex(item => item.id === hoveredItem);
 
   return (
-    <div className={`fixed lg:sticky top-0 left-0 h-screen bg-slate-950/40 backdrop-blur-3xl border-r border-white/5 flex flex-col transition-all duration-500 overflow-hidden group z-[100] ${deepWork ? 'w-20' : (collapsed ? 'w-0 lg:w-0' : 'w-full lg:w-72')}`}>
+    <div ref={sidebarRef} className={`fixed lg:sticky top-0 left-0 h-screen bg-slate-950/40 backdrop-blur-3xl border-r border-white/5 flex flex-col transition-all duration-500 overflow-hidden group z-[100] ${deepWork ? 'w-20' : (collapsed ? 'w-0 lg:w-0' : 'w-full lg:w-72')}`}>
+
       {/* SVG Definitions for Neural Links */}
       <svg className="absolute inset-0 pointer-events-none z-0" width="100%" height="100%">
         <defs>
@@ -69,7 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           <h1 className="text-2xl font-black tracking-tighter premium-gradient-text uppercase lg:block">
             ODYSSEY.ZENITH
           </h1>
-          <p className="text-[10px] font-black text-slate-400 tracking-[0.4em] uppercase lg:block">System Horizon</p>
+          <p className="text-[10px] font-black text-slate-400 tracking-[0.4em] uppercase lg:block">System Interface</p>
         </div>
       </div>
 
@@ -161,7 +174,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <div className={`hidden lg:block premium-glass rounded-2xl p-6 overflow-hidden relative group/intensity transition-all duration-500 ${deepWork ? 'opacity-0 scale-90 h-0 p-0 m-0' : 'opacity-100'}`}>
           <div className="relative z-10 space-y-6">
             <div className="flex justify-between items-center">
-              <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Resonance Lab</span>
+              <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Resonance Control</span>
               <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(99,102,241,1)]"></div>
             </div>
 
@@ -192,7 +205,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               </div>
             </div>
 
-            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest opacity-60">Neural Feedback Layer [ACTIVE]</p>
+            <p className="text-[8px] font-bold text-slate-500 uppercase tracking-widest opacity-60">System Feedback Layer [ACTIVE]</p>
           </div>
         </div>
 

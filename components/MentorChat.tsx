@@ -60,7 +60,7 @@ const MentorChat: React.FC<MentorChatProps> = ({ context }) => {
     setMessages(prev => [...prev, { role: 'model', text: '', timestamp: new Date(), isStreaming: true }]);
 
     try {
-      await getMentorResponseStream(input, context, (fullText) => {
+      await getMentorResponseStream(input, context, activePersonality.name, (fullText) => {
         setMessages(prev => {
           const updated = [...prev];
           const lastMsg = updated[updated.length - 1];

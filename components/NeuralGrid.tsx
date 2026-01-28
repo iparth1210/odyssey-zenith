@@ -7,8 +7,24 @@ interface NeuralGridProps {
     intensity: number;
 }
 
+interface Ripple {
+    x: number;
+    y: number;
+    radius: number;
+    maxRadius: number;
+    amplitude: number;
+    life: number; // 0 to 1
+}
+
 const NeuralGrid: React.FC<NeuralGridProps> = ({ mouseX, mouseY, intensity }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const mouseRef = useRef({ x: mouseX, y: mouseY });
+    const ripplesRef = useRef<Ripple[]>([]);
+
+    // Sync mouse coordinates WITHOUT triggering effect re-runs
+    useEffect(() => {
+        mouseRef.current = { x: mouseX, y: mouseY };
+    }, [mouseX, mouseY]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -26,65 +42,115 @@ const NeuralGrid: React.FC<NeuralGridProps> = ({ mouseX, mouseY, intensity }) =>
             height = window.innerHeight;
             canvas.width = width;
             canvas.height = height;
+            initGrid();
+        };
+
+        const handleClick = (e: MouseEvent) => {
+            const rect = canvas.getBoundingClientRect();
+            ripplesRef.current.push({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+                radius: 0,
+                maxRadius: 600,
+                amplitude: 40 * (intensity / 50),
+                life: 1
+            });
+        };
+
+        const gridSize = 40;
+        let columns: number;
+        let rows: number;
+        let points: { x: number; y: number; ox: number; oy: number }[][] = [];
+
+        const initGrid = () => {
+            columns = Math.ceil(width / gridSize) + 1;
+            rows = Math.ceil(height / gridSize) + 1;
+            points = [];
+            for (let i = 0; i < columns; i++) {
+                points[i] = [];
+                for (let j = 0; j < rows; j++) {
+                    const x = i * gridSize;
+                    const y = j * gridSize;
+                    points[i][j] = { x, y, ox: x, oy: y };
+                }
+            }
         };
 
         window.addEventListener('resize', handleResize);
+        window.addEventListener('mousedown', handleClick);
         handleResize();
-
-        const gridSize = 40;
-        const points: { x: number; y: number; ox: number; oy: number }[] = [];
-
-        for (let x = 0; x <= width + gridSize; x += gridSize) {
-            for (let y = 0; y <= height + gridSize; y += gridSize) {
-                points.push({ x, y, ox: x, oy: y });
-            }
-        }
 
         const render = () => {
             ctx.clearRect(0, 0, width, height);
 
-            const targetX = (mouseX + 1) * 0.5 * width;
-            const targetY = (mouseY + 1) * 0.5 * height;
+            const mX = mouseRef.current.x;
+            const mY = mouseRef.current.y;
+            const targetX = (mX + 1) * 0.5 * width;
+            const targetY = (mY + 1) * 0.5 * height;
 
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.05 * (intensity / 100)})`;
-            ctx.lineWidth = 1;
-
-            points.forEach(p => {
-                const dx = targetX - p.ox;
-                const dy = targetY - p.oy;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = 300;
-
-                if (dist < maxDist) {
-                    const force = (maxDist - dist) / maxDist;
-                    p.x = p.ox - (dx / dist) * force * 20 * (intensity / 50);
-                    p.y = p.oy - (dy / dist) * force * 20 * (intensity / 50);
-                } else {
-                    p.x = p.ox;
-                    p.y = p.oy;
-                }
+            // Update ripples
+            ripplesRef.current = ripplesRef.current.filter(r => r.life > 0.01);
+            ripplesRef.current.forEach(r => {
+                r.radius += 10;
+                r.life *= 0.98;
             });
 
-            // Draw Grid
-            for (let i = 0; i < points.length; i++) {
-                const p = points[i];
-                // Vertical lines
-                const nextV = points[i + 1];
-                if (nextV && nextV.ox === p.ox) {
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(nextV.x, nextV.y);
-                }
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (intensity / 100)})`;
+            ctx.lineWidth = 1;
 
-                // Horizontal lines
-                const nextH = points.find(pt => pt.ox === p.ox + gridSize && pt.oy === p.oy);
-                if (nextH) {
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(nextH.x, nextH.y);
+            for (let i = 0; i < columns; i++) {
+                for (let j = 0; j < rows; j++) {
+                    const p = points[i][j];
+
+                    // Mouse interaction
+                    const mouseDx = targetX - p.ox;
+                    const mouseDy = targetY - p.oy;
+                    const mouseDistSq = mouseDx * mouseDx + mouseDy * mouseDy;
+                    const maxMouseDist = 300;
+                    const maxMouseDistSq = maxMouseDist * maxMouseDist;
+
+                    let totalDx = 0;
+                    let totalDy = 0;
+
+                    if (mouseDistSq < maxMouseDistSq) {
+                        const dist = Math.sqrt(mouseDistSq);
+                        const force = (maxMouseDist - dist) / maxMouseDist;
+                        totalDx -= (mouseDx / dist) * force * 20 * (intensity / 50);
+                        totalDy -= (mouseDy / dist) * force * 20 * (intensity / 50);
+                    }
+
+                    // Ripple interaction
+                    ripplesRef.current.forEach(r => {
+                        const rdx = p.ox - r.x;
+                        const rdy = p.oy - r.y;
+                        const rdist = Math.sqrt(rdx * rdx + rdy * rdy);
+                        const distToRipple = Math.abs(rdist - r.radius);
+
+                        if (distToRipple < 100) {
+                            const rippleForce = (100 - distToRipple) / 100 * r.life * r.amplitude;
+                            const angle = Math.atan2(rdy, rdx);
+                            totalDx += Math.cos(angle) * rippleForce;
+                            totalDy += Math.sin(angle) * rippleForce;
+                        }
+                    });
+
+                    p.x = p.ox + totalDx;
+                    p.y = p.oy + totalDy;
+
+                    if (i < columns - 1) {
+                        const nextH = points[i + 1][j];
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(nextH.x, nextH.y);
+                    }
+                    if (j < rows - 1) {
+                        const nextV = points[i][j + 1];
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(nextV.x, nextV.y);
+                    }
                 }
             }
             ctx.stroke();
-
             animationFrameId = requestAnimationFrame(render);
         };
 
@@ -92,9 +158,10 @@ const NeuralGrid: React.FC<NeuralGridProps> = ({ mouseX, mouseY, intensity }) =>
 
         return () => {
             window.removeEventListener('resize', handleResize);
+            window.removeEventListener('mousedown', handleClick);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [mouseX, mouseY, intensity]);
+    }, [intensity]); // Re-run ONLY when intensity changes
 
     return (
         <canvas
@@ -106,3 +173,4 @@ const NeuralGrid: React.FC<NeuralGridProps> = ({ mouseX, mouseY, intensity }) =>
 };
 
 export default NeuralGrid;
+

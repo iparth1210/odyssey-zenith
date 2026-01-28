@@ -33,18 +33,8 @@
   body {
     @apply bg-[#020617] text-slate-100 antialiased selection:bg-indigo-500/30 font-['Outfit'] relative;
     overflow-x: hidden;
-    filter: url(#neural-lens);
   }
 
-  body::before {
-    content: "";
-    @apply fixed inset-0 pointer-events-none z-[1000] opacity-[0.03];
-    background:
-      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)),
-      radial-gradient(circle at center, transparent 30%, rgba(2, 6, 23, 0.8) 100%);
-    background-size: 100% 2px, 3px 100%, 100% 100%;
-  }
 
   /* Custom Selection Theme */
   ::selection {
@@ -242,7 +232,6 @@
 }
 
 .chromatic-text {
-  text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
   @apply antialiased;
 }
 
@@ -355,26 +344,6 @@
   }
 }
 
-.animate-flicker {
-  animation: flicker 0.15s infinite;
-}
-
-@keyframes scan {
-  from {
-    transform: translateY(-100%);
-  }
-
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-.animate-scan {
-  @apply fixed inset-0 pointer-events-none z-[300];
-  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.1), transparent);
-  height: 100px;
-  animation: scan 8s linear infinite;
-}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -526,10 +495,6 @@ h1 {
     filter: contrast(100%) brightness(100%) blur(0px);
   }
 
-  10% {
-    filter: contrast(120%) brightness(110%) blur(2px) drop-shadow(4px 0px 0px rgba(255, 0, 0, 0.4)) drop-shadow(-4px 0px 0px rgba(0, 255, 255, 0.4));
-  }
-
   100% {
     filter: contrast(100%) brightness(100%) blur(0px);
   }
@@ -612,7 +577,6 @@ h1 {
 }
 
 .input-glitch-focus:focus {
-  animation: shake-extreme 0.2s cubic-bezier(.36, .07, .19, .97) both;
   box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
 }
 
