@@ -175,16 +175,32 @@ const Roadmap: React.FC<RoadmapProps> = ({
               <h1 className="text-6xl font-black text-white mt-4">{activeDay.title}</h1>
             </header>
 
-            <div className="flex gap-4 mb-20">
-              {['theory', 'story', 'usage', 'quiz'].map(mode => (
-                <button
-                  key={mode}
-                  onClick={() => setActiveMode(mode as any)}
-                  className={`px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${activeMode === mode ? 'bg-indigo-500 text-white shadow-2xl' : 'text-slate-500 hover:text-white'}`}
-                >
-                  {mode}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-4 mb-20 items-center">
+              <div className="flex gap-2 mr-8">
+                {['theory', 'story', 'usage', 'quiz'].map(mode => (
+                  <button
+                    key={mode}
+                    onClick={() => setActiveMode(mode as any)}
+                    className={`px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${activeMode === mode ? 'bg-indigo-500 text-white shadow-2xl' : 'text-slate-500 hover:text-white'}`}
+                  >
+                    {mode}
+                  </button>
+                ))}
+              </div>
+
+              {/* Day Selector Bridge */}
+              <div className="flex-1 border-l border-white/5 pl-8 flex items-center gap-3 overflow-x-auto scrollbar-hide">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mr-2">Timeline:</span>
+                {activeModule.dailySchedule.map(d => (
+                  <button
+                    key={d.day}
+                    onClick={() => setSelectedDayNumber(d.day)}
+                    className={`min-w-[40px] h-10 rounded-xl flex items-center justify-center text-[10px] font-mono transition-all ${selectedDayNumber === d.day ? 'bg-indigo-500 text-white shadow-lg' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}
+                  >
+                    {d.day}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="min-h-[400px]">
