@@ -9,6 +9,8 @@ import AntigravityPortal from './components/AntigravityPortal';
 import CommandPalette from './components/CommandPalette';
 import NeuralGrid from './components/NeuralGrid';
 import ParallaxBackground from './components/ParallaxBackground';
+import GoogleSignIn from './components/GoogleSignIn';
+import SpotlightTour from './components/SpotlightTour';
 import { INITIAL_ROADMAP } from './constants';
 import { ProjectTask } from './types';
 
@@ -26,6 +28,7 @@ const App: React.FC = () => {
     } catch { return true; }
   });
   const [onboardingStage, setOnboardingStage] = useState(0);
+  const [tourActive, setTourActive] = useState(false);
   const [synapticActive, setSynapticActive] = useState(true);
 
   // Persistence Layer
@@ -175,8 +178,9 @@ const App: React.FC = () => {
       setTimeout(() => {
         setSynapticActive(false);
         setOnboarding(false);
+        setTourActive(true); // Trigger tour after splash
         localStorage.setItem('odyssey_initialized', 'true');
-      }, 3500);
+      }, 8000); // Extended for video/splash duration
     } else {
       setSynapticActive(false);
     }
@@ -206,6 +210,18 @@ const App: React.FC = () => {
     };
   }, []);
 
+  // Initialize Aura Visual Engine
+  useEffect(() => {
+    if (typeof (window as any).AuraVisualEngine !== 'undefined') {
+      setTimeout(() => {
+        const container = document.getElementById('aura-waveform-container');
+        if (container && !(window as any).auraVisual) {
+          (window as any).auraVisual = new (window as any).AuraVisualEngine('aura-waveform-container');
+        }
+      }, 1000); // Wait for DOM
+    }
+  }, []);
+
   const addXp = (amount: number) => {
     setXp(prev => prev + amount);
     setShowXpAlert(true);
@@ -231,7 +247,7 @@ const App: React.FC = () => {
         return <Roadmap
           modules={roadmap}
           setRoadmap={setRoadmap}
-          selectedModuleId={selectedModuleId || roadmap[1]?.id || roadmap[0]?.id}
+          selectedModuleId={selectedModuleId || roadmap[0]?.id}
           setSelectedModuleId={setSelectedModuleId}
           selectedDayNumber={selectedDayNumber}
           setSelectedDayNumber={setSelectedDayNumber}
@@ -414,19 +430,47 @@ const App: React.FC = () => {
                   <div className={`h-1 bg-indigo-500/20 rounded-full w-64 lg:w-96 transition-all duration-[3000ms] ease-out ${onboardingStage >= 1 ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="h-full bg-indigo-500 rounded-full transition-all duration-[5000ms]" style={{ width: onboardingStage === 1 ? '30%' : onboardingStage === 2 ? '70%' : onboardingStage >= 3 ? '100%' : '0%' }}></div>
                   </div>
+
+                  {/* Guidance Video reveal */}
+                  <div className={`mt-8 w-full max-w-2xl aspect-video rounded-[32px] overflow-hidden border border-white/10 shadow-4xl transition-all duration-1000 ${onboardingStage >= 2 ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}>
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/Q5K3jR9a3pM?autoplay=1&mute=1&controls=0&loop=1"
+                      title="Odyssey Onboarding"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
                   <div className="font-mono text-[10px] text-indigo-400/60 uppercase tracking-[0.4em] font-black h-4 overflow-hidden">
                     <span className={`block transition-all duration-300 ${onboardingStage === 1 ? 'translate-y-0' : '-translate-y-full'}`}>Establishing secure uplink...</span>
-                    <span className={`block transition-all duration-300 ${onboardingStage === 2 ? 'translate-y-0' : '-translate-y-full'}`}>Synchronizing cognitive layers...</span>
+                    <span className={`block transition-all duration-300 ${onboardingStage === 2 ? 'translate-y-0' : '-translate-y-full'}`}>Visualizing architectural guidelines...</span>
                     <span className={`block transition-all duration-300 ${onboardingStage === 3 ? 'translate-y-0' : '-translate-y-full'}`}>Connection stabilized. Welcome, Architect.</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <div className="absolute inset-x-0 bottom-12 z-20 flex flex-col items-center space-y-8">
+              <GoogleSignIn />
+              <p className="text-[10px] text-white/20 uppercase tracking-[0.5em] font-black">Secure Multi-Device Sync Protocol</p>
+            </div>
+
             <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/20 to-transparent pointer-events-none"></div>
           </div>
         )
       }
+
+      <SpotlightTour
+        active={tourActive}
+        onComplete={() => setTourActive(false)}
+        steps={[
+          { target: '#nav-roadmap', title: 'Curriculum Roadmap', description: 'Your 52-week journey to full-stack mastery starts here. Track your progress across 12 intensive modules.', position: 'right' },
+          { target: '#masterpiece-header', title: 'The Masterpiece', description: 'Manifest your vision into silicon reality. This is where you architect global-scale applications.', position: 'bottom' },
+          { target: '#mentor-trigger', title: 'Neural Mentor', description: 'Aura is your system architect. Query the hive mind whenever you encounter architectural entropy.', position: 'top' },
+        ]}
+      />
 
 
       <CommandPalette

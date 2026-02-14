@@ -136,7 +136,7 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
   return (
     <div className="h-full overflow-y-auto scrollbar-hide py-12 lg:py-16">
       <div className="managed-container flex flex-col min-h-full">
-        <header className="mb-20 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-16 border-b border-white/5 pb-16">
+        <header id="masterpiece-header" className="mb-20 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-16 border-b border-white/5 pb-16 animate-in slide-in-from-top-8 duration-700">
           <div className="space-y-6">
             <h2 className="text-7xl lg:text-9xl font-black text-white tracking-tighter leading-[0.85] antialiased">
               Masterpiece<span className="premium-gradient-text">.</span>
@@ -145,7 +145,7 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
               <div className="h-px w-24 bg-indigo-500/40"></div>
               <p className="text-slate-500 text-sm font-black uppercase tracking-[0.5em] italic">Architectural Hub 01</p>
             </div>
-            <p className="text-slate-400 text-xl max-w-2xl font-medium leading-relaxed opacity-80 border-l-2 border-indigo-500/20 pl-8">
+            <p className="text-slate-400 text-xl max-w-2xl font-medium leading-relaxed opacity-80 border-l-2 border-indigo-500/20 pl-8 delay-100">
               Manifesting silent visions into high-concurrency silicon reality. This is the terminal of raw creation.
             </p>
           </div>
@@ -173,8 +173,8 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
         </header>
 
         {!projectIdea ? (
-          <div className="flex-1 flex items-center justify-center py-20">
-            <div className="max-w-5xl w-full premium-glass border-white/10 rounded-[80px] p-20 lg:p-32 space-y-16 text-center shadow-4xl relative overflow-hidden group">
+          <div className="flex-1 flex items-center justify-center py-20 animate-in zoom-in-95 duration-1000">
+            <div id="logic-input-node" className="max-w-5xl w-full premium-glass border-white/10 rounded-[80px] p-20 lg:p-32 space-y-16 text-center shadow-4xl relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
               <div className="relative z-10 space-y-12">
                 <div className="w-28 h-28 bg-white rounded-[44px] flex items-center justify-center text-slate-950 mx-auto shadow-4xl transform group-hover:rotate-12 transition-all duration-1000">
@@ -403,11 +403,11 @@ const ProjectConsole: React.FC<ProjectConsoleProps> = ({
 
                 <header className="flex items-center justify-between mb-12 relative z-10 px-2">
                   <div className="flex items-center space-x-5">
-                    <div className="w-4 h-4 rounded-full bg-rose-500 animate-pulse shadow-[0_0_10px_rose]"></div>
-                    <h4 className="text-[12px] font-black text-indigo-400 uppercase tracking-[0.5em] drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]">Terminal Output</h4>
+                    <div className="w-4 h-4 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_15px_var(--accent-cyan)]"></div>
+                    <h4 className="text-[12px] font-black text-cyan-400 font-mono uppercase tracking-[0.5em] drop-shadow-[0_0_8px_rgba(6,182,212,0.3)]">NEURAL_KERNEL_LOG</h4>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <span className="text-[9px] font-mono text-slate-600 font-black tracking-widest">ENCRYPTED</span>
+                    <span className="text-[9px] font-mono text-slate-600 font-black tracking-widest">ENCRYPTED_LINK_ACTIVE</span>
                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_5px_emerald]"></div>
                   </div>
                 </header>

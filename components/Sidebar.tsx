@@ -75,8 +75,8 @@ const Sidebar: React.FC<SidebarProps> = ({
       </svg>
 
       <div className={`p-8 mb-8 flex items-center justify-between lg:block transition-all duration-500 ${deepWork ? 'opacity-0 h-0 p-0 mb-0 overflow-hidden' : 'opacity-100'}`}>
-        <div className="w-12 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-500/20 mb-0 lg:mb-6 group-hover:rotate-12 transition-transform duration-500 animate-heartbeat">
-          <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1H9L8 4z" /></svg>
+        <div className="w-12 h-12 bg-slate-900/60 premium-glass border border-white/10 rounded-2xl flex items-center justify-center shadow-2xl mb-0 lg:mb-6 group-hover:scale-110 transition-transform duration-500">
+          <div id="aura-waveform-container" className="w-full h-full p-2"></div>
         </div>
         <div className="space-y-1">
           <h1 className="text-2xl font-black tracking-tighter premium-gradient-text uppercase lg:block">
@@ -105,6 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             onMouseLeave={() => setHoveredItem(null)}
           >
             <button
+              id={item.id === 'roadmap' ? 'nav-roadmap' : item.id === 'mentor' ? 'mentor-trigger' : undefined}
               onClick={() => {
                 const uiClick = new Audio('data:audio/mp3;base64,SUQzBAAAAAABAFRYWFgAAAASAAADbWFqb3JfYnJhbmQAZGFzaABUWFhYAAAAEgAAA21pbm9yX3ZlcnNpb24AMABUWFhYAAAAHAAAA2NvbXBhdGlibGVfYnJhbmRzAGlzbzZtcDQxAFRTU0UAAAAPAAADTGF2ZjYwLjMuMTAwAAAAAAAAAAAAAAD/+00AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+00fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+00fAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYXBpbmcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
                 uiClick.volume = 0.05;
