@@ -118,6 +118,14 @@ const MediaRenderer: React.FC<MediaRendererProps> = ({ imagePrompt, videoId, tit
                 <span className="text-[8px] font-bold text-accent uppercase tracking-widest">Video Node Absent - AI Failsafe Triggered</span>
             </div>
         )}
+        {videoId && (
+          <button 
+              onClick={() => setShowVideo(true)}
+              className="px-8 py-3 rounded-2xl bg-accent text-[#050A10] border border-accent text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#050A10] transition-all flex items-center gap-2"
+          >
+              <span>\u25B6</span> Watch Explainer Video
+          </button>
+        )}
         <button 
             onClick={generateSummary}
             disabled={isSummarizing}

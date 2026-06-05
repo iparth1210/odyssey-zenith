@@ -39,6 +39,7 @@ export interface SubTopic {
   vocabulary?: VocabularyTerm[]; 
   isShadow?: boolean;
   jurisdictionalMatrix?: JurisdictionalNode[];
+  resources?: Resource[];
 }
 
 export interface Topic {

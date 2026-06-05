@@ -71,6 +71,53 @@ const SubTopicModule: React.FC<{ sub: SubTopic }> = ({ sub }) => {
           <div className="math-container text-lg lg:text-2xl whitespace-nowrap">{sub.technicalBriefing}</div>
         </div>
       )}
+
+      {sub.vocabulary && sub.vocabulary.length > 0 && (
+        <div className="space-y-4 relative z-10 border-t border-white/5 pt-8">
+          <span className="text-[9px] font-black text-accent uppercase tracking-[0.5em] block">Sovereign Glossary</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {sub.vocabulary.map((vocab, i) => (
+              <div key={i} className="p-6 rounded-[28px] bg-white/[0.02] border border-white/5 space-y-3 hover:border-accent/30 transition-all duration-300">
+                <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span className="text-base font-bold text-white font-mono">{vocab.word}</span>
+                  <span className="text-[8px] font-black uppercase text-accent/50 tracking-widest bg-accent/5 px-2 py-0.5 rounded-full border border-accent/10">Term</span>
+                </div>
+                <div className="text-xs text-slate-400 italic font-light">
+                  <strong className="text-[10px] text-white/40 uppercase tracking-wider not-italic mr-1">Analogy:</strong>
+                  {vocab.streetAnalogy}
+                </div>
+                <div className="text-xs text-slate-300 font-light">
+                  <strong className="text-[10px] text-accent/60 uppercase tracking-wider mr-1">Institutional:</strong>
+                  {vocab.boardroomDefinition}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {sub.resources && sub.resources.length > 0 && (
+        <div className="space-y-4 relative z-10 border-t border-white/5 pt-8">
+          <span className="text-[9px] font-black text-accent uppercase tracking-[0.5em] block">Sovereign Reference Nodes</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {sub.resources.map((res, i) => (
+              <a 
+                key={i} 
+                href={res.url} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-accent/50 hover:bg-accent/5 flex items-center justify-between text-xs text-slate-300 hover:text-white transition-all group animate-fade-in"
+              >
+                <div className="flex flex-col min-w-0">
+                  <span className="font-bold truncate pr-4 text-white group-hover:text-accent transition-colors">{res.title}</span>
+                  <span className="text-[9px] text-slate-500 uppercase mt-1">{res.type}</span>
+                </div>
+                <span className="text-[8px] font-black uppercase text-accent/50 group-hover:text-accent shrink-0 border border-accent/20 px-3 py-1 rounded bg-accent/5">{res.provider || 'LINK'}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
