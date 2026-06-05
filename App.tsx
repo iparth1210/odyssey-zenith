@@ -347,6 +347,15 @@ const App: React.FC = () => {
                       <span className="text-accent font-mono text-2xl tracking-tighter">{progress.userName}</span>
                     </div>
                     <button 
+                      onClick={() => {
+                        setProgress(prev => ({ ...prev, currentLevel: CURRICULUM.length }));
+                        alert("Sovereign bypass verified. All financial phases unlocked.");
+                      }}
+                      className="w-full py-10 border-2 border-accent/20 text-accent font-black uppercase tracking-[0.8em] rounded-[32px] hover:bg-accent hover:text-[#050A10] transition-all shadow-[0_0_50px_rgba(212,175,55,0.1)] mb-6"
+                    >
+                      Sovereign Override (Unlock All Phases)
+                    </button>
+                    <button 
                       onClick={() => { if(confirm("Permanently shredded local financial ledger. Proceed with Hard Reset?")){ localStorage.clear(); window.location.reload(); } }} 
                       className="w-full py-10 border-2 border-red-500/20 text-red-500 font-black uppercase tracking-[0.8em] rounded-[32px] hover:bg-red-500 hover:text-white transition-all shadow-[0_0_50px_rgba(239,68,68,0.1)]"
                     >
