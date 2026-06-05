@@ -1,4 +1,3 @@
-
 import { Level, LevelStatus } from './types';
 
 export const CURRICULUM: Level[] = [
@@ -69,20 +68,118 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 10,
+    id: 3,
+    name: "PHASE 2: DEBT & LEVERAGE",
+    tagline: "Fixed Income and Capital Structure Optimization.",
+    status: LevelStatus.AVAILABLE,
+    icon: "🏛️",
+    topics: [
+      {
+        id: "t2-1",
+        title: "The Yield Curve Matrix",
+        description: "Analyze yield curve inversions to predict economic cycles and credit liquidity shocks.",
+        missionStrategy: "Understand short-term vs long-term interest rates to gauge market expectations.",
+        category: 'DEBT',
+        funnyTake: "Bonds are just loans to governments that promise to pay you back with money they print later.",
+        subTopics: [
+          {
+            title: "Yield Curve Inversion",
+            streetExplanation: "When short-term loans pay more than long-term ones, banks stop lending and the market panics.",
+            boardroomExplanation: "An inversion of the term structure of interest rates signaling impending recessions.",
+            technicalBriefing: "$$Spread = Yield_{10Y} - Yield_{2Y} < 0$$",
+            explainerVideoId: "1J1c9vG86u0",
+            institutionalSecret: "Smart money locks in long-duration yields right at the peak of the inversion before rate cuts start.",
+            imagePrompt: "A glowing 3D graph representing yield curves curving downwards into a dark abyss.",
+            vocabulary: [{ word: "Yield to Maturity", streetAnalogy: "Total return if you hold it forever.", boardroomDefinition: "The total return anticipated on a bond if it is held until it matures." }]
+          }
+        ],
+        resources: [
+          { title: "Understanding the Yield Curve", url: "https://www.investopedia.com/terms/y/yieldcurve.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: "PHASE 3: RISK ARBITRAGE",
+    tagline: "Modern Portfolio Theory and Sharpe Ratio Dynamics.",
+    status: LevelStatus.AVAILABLE,
+    icon: "📊",
+    topics: [
+      {
+        id: "t3-1",
+        title: "Efficient Frontier Dynamics",
+        description: "Optimize asset allocations along the efficient frontier to maximize risk-adjusted returns.",
+        missionStrategy: "Learn to balance risk and reward via math-based portfolio diversification.",
+        category: 'PORTFOLIO',
+        funnyTake: "Diversification means having a lot of different investments go down at different times.",
+        subTopics: [
+          {
+            title: "The Sharpe Ratio",
+            streetExplanation: "Are you actually good at investing, or are you just taking crazy risks to get returns?",
+            boardroomExplanation: "The standard measure of risk-adjusted return, calculated as excess return per unit of volatility.",
+            technicalBriefing: "$$Sharpe = \\frac{R_p - R_f}{\\sigma_p}$$",
+            explainerVideoId: "a5v_2BwQ3fM",
+            institutionalSecret: "Desk managers manipulate the Sharpe ratio by buying low-volatility assets and multiplying returns using leverage.",
+            imagePrompt: "A multi-dimensional mathematical graph with glowing vectors in platinum and gold.",
+            vocabulary: [{ word: "Standard Deviation", streetAnalogy: "How wild the ride is.", boardroomDefinition: "A statistic that measures the dispersion of a dataset relative to its mean." }]
+          }
+        ],
+        resources: [
+          { title: "Modern Portfolio Theory Foundations", url: "https://www.investopedia.com/terms/m/modernportfoliotheory.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 5,
+    name: "PHASE 4: DERIVATIVES & VOLATILITY",
+    tagline: "Options, Futures, and Systematic Hedging Matrix.",
+    status: LevelStatus.AVAILABLE,
+    icon: "⚙️",
+    topics: [
+      {
+        id: "t4-1",
+        title: "Options Hedging Protocol",
+        description: "Utilize call and put options to protect capital structures against market tail risk.",
+        missionStrategy: "Trade options to manage volatility risk and protect your long-term wealth portfolio.",
+        category: 'DERIVATIVES',
+        funnyTake: "Options trading is like buying insurance on houses you don't own, hoping they catch fire.",
+        subTopics: [
+          {
+            title: "Black-Scholes Delta Hedging",
+            streetExplanation: "Buy options to lock in a price. Adjust your stock holdings so you break even no matter where the market moves.",
+            boardroomExplanation: "A mathematical model to calculate the theoretical value of options using volatility, strike price, and time.",
+            technicalBriefing: "$$C = S_0 N(d_1) - K e^{-rt} N(d_2)$$",
+            explainerVideoId: "D34x9Jm1vL4",
+            institutionalSecret: "Market makers rely on retail traders buying out-of-the-money options to collect easy premium via theta decay.",
+            imagePrompt: "Complex mathematical equations transforming into glowing golden shields surrounding stock charts.",
+            vocabulary: [{ word: "Delta", streetAnalogy: "How much your option copies the stock.", boardroomDefinition: "The ratio comparing the change in the price of an asset to the corresponding change in the price of its derivative." }]
+          }
+        ],
+        resources: [
+          { title: "Options Trading Basics", url: "https://www.investopedia.com/terms/o/option.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 6,
     name: "PHASE 10: SOVEREIGN LEGACY",
     tagline: "Dynastic Wealth and Multi-Jurisdictional Arbitrage.",
     status: LevelStatus.AVAILABLE,
-    icon: "💎",
+    icon: "🛡️",
     topics: [
       {
-        id: "t10-1",
+        id: "t5-1",
         title: "The 'Buy, Borrow, Die' Protocol",
         description: "Mastering the institutional loop for perpetual tax-free liquidity.",
         missionStrategy: "Leverage Securities-Based Lines of Credit (SBLOCs) to fund lifestyle while shielding the cost-basis.",
         category: 'SOVEREIGN',
         funnyTake: "The elite don't spend money; they spend the bank's money backed by their own.",
-        institutionalBriefing: "By utilizing non-purpose SBLOCs, a Sovereign preserves exposure to capital growth while accessing liquidity through low-interest debt.",
         subTopics: [
           {
             title: "Debt Shield Efficiency",
@@ -101,7 +198,7 @@ export const CURRICULUM: Level[] = [
         isQuizCompleted: false
       },
       {
-        id: "t10-2",
+        id: "t5-2",
         title: "Jurisdictional Arbitrage",
         description: "Optimizing Legality and Mobility via Flag Theory.",
         missionStrategy: "Distribute legal, physical, and financial presence across global jurisdictions to minimize sovereign risk.",

@@ -255,9 +255,21 @@ const App: React.FC = () => {
                 transition={{ duration: 0.5 }}
                 className="max-w-7xl mx-auto space-y-16"
               >
-                <div className="flex flex-col gap-6 border-l-4 border-accent pl-12">
-                  <h1 className="text-5xl lg:text-8xl font-bold text-white tracking-tighter leading-none uppercase font-display">THE<br/><span className="text-accent">SINGULARITY</span></h1>
-                  <p className="text-slate-400 font-light text-lg lg:text-2xl tracking-wide max-w-2xl leading-relaxed italic opacity-80">Architecture for Dynastic Wealth Preservation.</p>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-l-4 border-accent pl-12">
+                  <div className="space-y-4">
+                    <h1 className="text-5xl lg:text-8xl font-bold text-white tracking-tighter leading-none uppercase font-display">THE<br/><span className="text-accent">SINGULARITY</span></h1>
+                    <p className="text-slate-400 font-light text-lg lg:text-2xl tracking-wide max-w-2xl leading-relaxed italic opacity-80">Architecture for Dynastic Wealth Preservation.</p>
+                  </div>
+                  {progress.completedTopicIds.length >= totalTopicsCount && totalTopicsCount > 0 && (
+                    <motion.button
+                      whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(212,175,55,0.4)" }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => { playMechanicalSound('click'); setShowCertificate(true); }}
+                      className="px-8 py-4 border-2 border-accent text-accent font-black uppercase text-xs tracking-[0.3em] rounded-full bg-accent/5 hover:bg-accent hover:text-[#050A10] transition-all duration-300 relative z-50 shrink-0"
+                    >
+                      🛡️ View Sovereign Credential
+                    </motion.button>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
