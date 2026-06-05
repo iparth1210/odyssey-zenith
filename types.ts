@@ -1,81 +1,90 @@
 
-export enum ModuleStatus {
+export enum LevelStatus {
   LOCKED = 'LOCKED',
-  CURRENT = 'CURRENT',
+  AVAILABLE = 'AVAILABLE',
   COMPLETED = 'COMPLETED'
 }
 
-export type ResourceType = 'video' | 'article' | 'course' | 'interactive' | 'book' | 'documentation';
-
 export interface Resource {
-  type: ResourceType;
-  label: string;
+  title: string;
   url: string;
-  duration?: string;
+  type: 'video' | 'article' | 'book' | 'paper' | 'whitepaper';
   provider?: string;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced' | 'Pro';
-  thumbnail?: string;
-  embedId?: string;
+  fallbackSummary?: string;
 }
 
-export interface TheoryPoint {
+export interface VocabularyTerm {
+  word: string;
+  streetAnalogy: string;
+  boardroomDefinition: string;
+}
+
+export interface JurisdictionalNode {
+  nation: string;
+  taxRate: string;
+  assetProtection: string;
+  sovereignRisk: 'Low' | 'Medium' | 'High';
+  keyAdvantage: string;
+}
+
+export interface SubTopic {
   title: string;
-  description: string;
-  imageUrl: string;
+  streetExplanation: string;
+  boardroomExplanation: string;
+  institutionalSecret?: string; 
+  technicalBriefing?: string; // LaTeX enabled
+  imagePrompt?: string; // For AI generation
+  explainerVideoId?: string; // YouTube/Vimeo ID
+  animePlaceholder?: string; // Description for the anime-style conceptual motion
+  vocabulary?: VocabularyTerm[]; 
+  isShadow?: boolean;
+  jurisdictionalMatrix?: JurisdictionalNode[];
 }
 
-export interface QuizQuestion {
-  question: string;
-  options: string[];
-  correctIndex: number;
-  explanation: string;
-}
-
-export interface DailyTask {
-  day: number;
-  title: string;
-  objective: string;
-  conceptualWhy: string;
-  funnyStory: string;
-  storyImageUrl: string;
-  practicalUsage: string;
-  detailedTheory: TheoryPoint[];
-  resources: Resource[];
-  quiz?: QuizQuestion; // Optional quiz for the day
-}
-
-export interface RoadmapModule {
+export interface Topic {
   id: string;
   title: string;
   description: string;
-  conceptualWhy: string;
-  funnyStory: string;
-  practicalUsage: string;
-  month: number;
-  topics: string[];
-  status: ModuleStatus;
-  skills: string[];
+  missionStrategy: string; 
+  funnyTake: string;
+  subTopics: SubTopic[];
+  institutionalBriefing?: string; 
   resources: Resource[];
-  previewImage: string;
-  dailySchedule: DailyTask[];
-  masteryProject: {
-    title: string;
-    description: string;
+  isQuizCompleted: boolean;
+  category: 'TRADER' | 'BUILDER' | 'SOVEREIGN' | 'CORE' | 'MACRO' | 'COMMODITIES' | 'FIXED_INCOME' | 'EQUITIES' | 'DERIVATIVES' | 'PORTFOLIO';
+}
+
+export interface Level {
+  id: number;
+  name: string;
+  tagline: string;
+  status: LevelStatus;
+  topics: Topic[];
+  icon: string;
+  personaVideoId?: string; 
+}
+
+export interface PsychologyProfile {
+  trait: string;
+  fomoResistance: number;
+  analyticalPatience: number;
+  riskAppetite: number;
+}
+
+export interface UserProgress {
+  userName?: string;
+  currentLevel: number;
+  completedTopicIds: string[];
+  totalPoints: number;
+  streak: number;
+  lastActiveDate: string;
+  psychology: PsychologyProfile;
+  notepad: string[];
+  interestScores: {
+    TRADER: number;
+    BUILDER: number;
   };
-}
-
-export interface ProjectTask {
-  id: string;
-  title: string;
-  category: 'Fundamentals' | 'Frontend' | 'Backend' | 'Database' | 'DevOps' | 'System Design' | 'Security' | 'MANUAL';
-  difficulty: 'Easy' | 'Medium' | 'Hard';
-  completed: boolean;
-  description: string;
-}
-
-export interface ChatMessage {
-  role: 'user' | 'model';
-  text: string;
-  timestamp: Date;
-  isStreaming?: boolean;
+  blackSwanDecisions: { event: string; choice: string; impact: number }[];
+  isCertified: boolean;
+  hasCompletedOnboarding?: boolean;
 }

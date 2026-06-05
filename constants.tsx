@@ -1,238 +1,131 @@
-const generateMonthDays = (month: number, theme: string): DailyTask[] => {
-  return Array.from({ length: 30 }, (_, i) => ({
-    day: i + 1,
-    title: `Sequence ${month}.${(i + 1).toString().padStart(2, '0')}: ${theme}`,
-    objective: `Mastering advanced ${theme.toLowerCase()} primitives.`,
-    conceptualWhy: `Elite architecture requires mastery of the unit. Sequence ${i + 1} bridges the gap between theory and production.`,
-    funnyStory: `The developer who thought they could out-smart the ${theme} layer... their terminal is still screaming today.`,
-    storyImageUrl: `https://images.unsplash.com/photo-${[
-      '1451187580459-43490279c0fa',
-      '1550751827-4bd374c3f58b',
-      '1518770660439-4636190af475',
-      '1517077304055-6e89abbf09b0',
-      '1504384308090-c894fdcc538d'
-    ][Math.floor(Math.random() * 5)]}?auto=format&fit=crop&q=80&w=800`,
-    practicalUsage: `Building high-performance ${theme.toLowerCase()} systems at scale.`,
-    detailedTheory: [{
-      title: `${theme} Nexus Point ${i + 1}`,
-      description: `Optimizing the ${theme.toLowerCase()} synchronization matrix for sub-millisecond latency.`,
-      imageUrl: "https://images.unsplash.com/photo-1518433278988-78ef99ea0524?auto=format&fit=crop&q=80&w=800"
-    }],
-    resources: [
-      { type: 'video', label: `Mastering ${theme} Layer`, url: 'https://www.youtube.com/', difficulty: 'Intermediate', duration: '12:45', provider: 'Odyssey Intelligence' }
-    ],
-    quiz: {
-      question: `What is the primary constraint of the ${theme} interface in this sequence?`,
-      options: ["Latency sync", "Logical state", "Physical heat", "Data density"],
-      correctIndex: 0,
-      explanation: "Latency synchronization is the ultimate goal of high-fidelity architectural units."
-    }
-  }));
-};
 
-export const INITIAL_ROADMAP: RoadmapModule[] = [
+import { Level, LevelStatus } from './types';
+
+export const CURRICULUM: Level[] = [
   {
-    id: 'm0',
-    month: 0,
-    title: 'Silicon Foundations',
-    description: 'Deconstruct the physical reality of computing.',
-    conceptualWhy: 'Hardware is the stage; software is the play.',
-    funnyStory: 'The Post-it Note Database.',
-    practicalUsage: 'System performance.',
-    topics: ['Transistors', 'Logic Gates', 'Binary'],
-    skills: ['Architecture', 'Logic'],
-    status: ModuleStatus.COMPLETED,
-    previewImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonth0Days(),
-    masteryProject: { title: 'Logic Lab', description: 'Build an 8-bit adder.' },
-    resources: [],
-    progress: 100
+    id: 1,
+    name: "PHASE 0: MONETARY GENESIS",
+    tagline: "Architecture of Trust and Global Ledger Systems.",
+    status: LevelStatus.AVAILABLE,
+    icon: "📜",
+    topics: [
+      {
+        id: "t0-1",
+        title: "The Velocity of Value",
+        description: "Deconstructing the evolution from physical commodity to digital fiat-centralization.",
+        missionStrategy: "Analyze the 'Double Coincidence of Wants' and the emergence of institutional clearing houses.",
+        category: 'CORE',
+        funnyTake: "Money is the most successful shared hallucination in human history.",
+        subTopics: [
+          {
+            title: "The Equation of Exchange",
+            streetExplanation: "If money moves too fast with fixed supply, prices explode. If it stops, the system seizes.",
+            boardroomExplanation: "The fundamental identity of classical monetary theory relating money supply to price stability.",
+            technicalBriefing: "$$MV = PY$$",
+            explainerVideoId: "pY-x8M_6Acs",
+            institutionalSecret: "Central banks target the 2% inflation rate not for stability, but to ensure perpetual debt-service viability.",
+            imagePrompt: "Intricate architectural blueprints of a global central bank vault, obsidian glass and gold circuits.",
+            vocabulary: [{ word: "Velocity", streetAnalogy: "How fast a dollar changes hands.", boardroomDefinition: "The frequency at which one unit of currency is used to purchase goods and services within a given time period." }]
+          }
+        ],
+        resources: [
+          { title: "Principles for Dealing with the Changing World Order", url: "https://www.youtube.com/watch?v=xguam0TKMw8", type: "video", provider: "Ray Dalio" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
   },
   {
-    id: 'm1',
-    month: 1,
-    title: 'The Kernel Authority',
-    description: 'Master the operating systems and kernel interfaces.',
-    conceptualWhy: 'The OS is the traffic controller.',
-    funnyStory: 'The Waiter and the Burger.',
-    practicalUsage: 'High-concurrency systems.',
-    topics: ['Kernels', 'Syscalls', 'Memory Management'],
-    skills: ['OS', 'Performance'],
-    status: ModuleStatus.CURRENT,
-    previewImage: 'https://images.unsplash.com/photo-1518433278988-78ef99ea0524?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonth1Days(),
-    masteryProject: { title: 'Kernel Bridge', description: 'Implement a basic shell.' },
-    resources: [],
-    progress: 3
+    id: 2,
+    name: "PHASE 1: CAPITAL VALUATION",
+    tagline: "Equity Risk Premiums and Intrinsic Logic.",
+    status: LevelStatus.AVAILABLE,
+    icon: "📈",
+    topics: [
+      {
+        id: "t1-1",
+        title: "Intrinsic Value Architecture",
+        description: "The mathematical core of asset pricing and capital allocation.",
+        missionStrategy: "Identify market mispricing by calculating the Net Present Value of future liquidity streams.",
+        category: 'EQUITIES',
+        funnyTake: "A stock price is just a consensus opinion on a company's future stress levels.",
+        subTopics: [
+          {
+            title: "Discounted Cash Flow (DCF)",
+            streetExplanation: "How much would you pay today for a guaranteed stream of income tomorrow?",
+            boardroomExplanation: "The definitive valuation methodology used to estimate investment value based on risk-adjusted future cash flows.",
+            technicalBriefing: "$$PV = \\sum_{t=1}^{n} \\frac{CF_t}{(1+r)^t} + \\frac{TV}{(1+r)^n}$$",
+            explainerVideoId: "fd_emLLzJnk",
+            institutionalSecret: "Institutional desks focus on the Weighted Average Cost of Capital (WACC) to manipulate hurdle rates for strategic acquisitions.",
+            imagePrompt: "A high-fidelity digital projection of future cash flows emerging from a platinum-coated server.",
+            vocabulary: [{ word: "Discount Rate", streetAnalogy: "The price of waiting.", boardroomDefinition: "The interest rate used in DCF analysis to determine the present value of future cash flows." }]
+          }
+        ],
+        resources: [
+          { title: "Valuation Foundations (Vanguard)", url: "https://institutional.vanguard.com/insights-and-education.html", type: "paper", provider: "Vanguard" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
   },
   {
-    id: 'm2',
-    month: 2,
-    title: 'The Network Nexus',
-    description: 'Navigate the invisible highways of the internet.',
-    conceptualWhy: 'Understanding the layers of data travel.',
-    funnyStory: 'Bob the Packet.',
-    practicalUsage: 'API design.',
-    topics: ['TCP/IP', 'HTTP/3', 'WebSockets'],
-    skills: ['Networking', 'Protocols'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1558494949-ef0109556754?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(2, "Network Protocol"),
-    masteryProject: { title: 'Protocol Pioneer', description: 'Build a TCP chat application.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm3',
-    month: 3,
-    title: 'The Data Forge',
-    description: 'Master persistent storage and data modeling.',
-    conceptualWhy: 'Refining information into intelligence.',
-    funnyStory: 'Sally and the 4 million rows.',
-    practicalUsage: 'Scalable data systems.',
-    topics: ['SQL', 'NoSQL', 'Indexing'],
-    skills: ['Database', 'Optimization'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(3, "Data Management"),
-    masteryProject: { title: 'Data Architect', description: 'Design an e-commerce schema.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm4',
-    month: 4,
-    title: 'The Frontend Frontier',
-    description: 'Craft pixel-perfect interfaces.',
-    conceptualWhy: 'The UI is the face of your application.',
-    funnyStory: 'Centering a div for 3 hours.',
-    practicalUsage: 'Responsive web engineering.',
-    topics: ['HTML5', 'CSS Grid', 'Animation'],
-    skills: ['Frontend', 'UI/UX'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(4, "UI Engineering"),
-    masteryProject: { title: 'Pixel Perfect', description: 'Clone a professional landing page.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm5',
-    month: 5,
-    title: 'The JavaScript Engine',
-    description: 'Master the language that powers the web.',
-    conceptualWhy: 'The lingua franca of the internet.',
-    funnyStory: 'Why 0.1 + 0.2 isn\'t 0.3.',
-    practicalUsage: 'Interactive applications.',
-    topics: ['ES6+', 'Async/Await', 'Closures'],
-    skills: ['JavaScript', 'Logic'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(5, "JS Engine"),
-    masteryProject: { title: 'JS Mastery', description: 'Build a custom Promise.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm6',
-    month: 6,
-    title: 'The React Revolution',
-    description: 'Build declarative component systems.',
-    conceptualWhy: 'Components are the LEGO blocks of UI.',
-    funnyStory: 'The re-render that broke the world.',
-    practicalUsage: 'Modern SPA development.',
-    topics: ['Hooks', 'State', 'Context'],
-    skills: ['React', 'Architecture'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(6, "React Framework"),
-    masteryProject: { title: 'React Architect', description: 'Build a Kanban board.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm7',
-    month: 7,
-    title: 'The Node Nexus',
-    description: 'Extend JavaScript to the server.',
-    conceptualWhy: 'Enabling fullstack JavaScript development.',
-    funnyStory: 'The infinite event loop.',
-    practicalUsage: 'REST APIs & Microservices.',
-    topics: ['Express', 'Middleware', 'Auth'],
-    skills: ['Node.js', 'Backend'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(7, "Backend Logic"),
-    masteryProject: { title: 'API Architect', description: 'Build an Auth system.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm8',
-    month: 8,
-    title: 'TypeScript Transformation',
-    description: 'Add static typing for enterprise quality.',
-    conceptualWhy: 'Catching bugs before they reach production.',
-    funnyStory: 'The "any" that hid a disaster.',
-    practicalUsage: 'Scalable software engineering.',
-    topics: ['Types', 'Interfaces', 'Generics'],
-    skills: ['TypeScript', 'Safety'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(8, "Type Systems"),
-    masteryProject: { title: 'Type Master', description: 'Migrate a JS app to TS.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm9',
-    month: 9,
-    title: 'The Testing Temple',
-    description: 'Master automated quality assurance.',
-    conceptualWhy: 'Untested code is just broken code waiting.',
-    funnyStory: 'It works on my machine...',
-    practicalUsage: 'Reliable deployment.',
-    topics: ['Unit', 'E2E', 'TDD'],
-    skills: ['QA', 'Reliability'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1576444356170-66073046b1bc?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(9, "Software Testing"),
-    masteryProject: { title: 'Test Champion', description: 'Achieve 95% coverage.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm10',
-    month: 10,
-    title: 'The DevOps Domain',
-    description: 'Automate deployment pipelines.',
-    conceptualWhy: 'Shipping fast and reliably with CI/CD.',
-    funnyStory: 'Friday 5 PM Code Deploy.',
-    practicalUsage: 'Continuous integration.',
-    topics: ['Docker', 'AWS', 'Actions'],
-    skills: ['Cloud', 'DevOps'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(10, "DevOps Mastery"),
-    masteryProject: { title: 'DevOps Engineer', description: 'Build a full pipeline.' },
-    resources: [],
-    progress: 0
-  },
-  {
-    id: 'm11',
-    month: 11,
-    title: 'The Scale Summit',
-    description: 'Design systems for global mastery.',
-    conceptualWhy: 'Handling millions of concurrent signals.',
-    funnyStory: 'The database that went to space.',
-    practicalUsage: 'Elite platform engineering.',
-    topics: ['Caching', 'Microservices', 'Load Sync'],
-    skills: ['Architecture', 'Scale'],
-    status: ModuleStatus.LOCKED,
-    previewImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200',
-    dailySchedule: generateMonthDays(11, "Global Systems"),
-    masteryProject: { title: 'Scale Architect', description: 'Deploy global infrastructure.' },
-    resources: [],
-    progress: 0
+    id: 10,
+    name: "PHASE 10: SOVEREIGN LEGACY",
+    tagline: "Dynastic Wealth and Multi-Jurisdictional Arbitrage.",
+    status: LevelStatus.AVAILABLE,
+    icon: "💎",
+    topics: [
+      {
+        id: "t10-1",
+        title: "The 'Buy, Borrow, Die' Protocol",
+        description: "Mastering the institutional loop for perpetual tax-free liquidity.",
+        missionStrategy: "Leverage Securities-Based Lines of Credit (SBLOCs) to fund lifestyle while shielding the cost-basis.",
+        category: 'SOVEREIGN',
+        funnyTake: "The elite don't spend money; they spend the bank's money backed by their own.",
+        institutionalBriefing: "By utilizing non-purpose SBLOCs, a Sovereign preserves exposure to capital growth while accessing liquidity through low-interest debt.",
+        subTopics: [
+          {
+            title: "Debt Shield Efficiency",
+            streetExplanation: "Never sell your winners. Borrow against them. Pay the bank 4% so you don't pay the government 25%.",
+            boardroomExplanation: "Optimizing the spread between the cost of institutional debt and the expected equity risk premium.",
+            technicalBriefing: "$$\\Delta_{Alpha} = (CAGR \\times (1 - Tax_{Rate})) - (Borrow\\_Rate)$$",
+            explainerVideoId: "mX4_X7A8K9A",
+            institutionalSecret: "The key is combining SBLOCs with Private Placement Life Insurance (PPLI) for secondary layers of tax-deferred compounding.",
+            imagePrompt: "A golden geometric shield protecting a crystal-encased stack of stock certificates from a digital grim reaper.",
+            vocabulary: [{ word: "SBLOC", streetAnalogy: "A credit card for billionaires.", boardroomDefinition: "Securities-Based Line of Credit; a revolving credit facility secured by a portfolio of marketable securities." }]
+          }
+        ],
+        resources: [
+          { title: "Buy, Borrow, Die (WSJ)", url: "https://www.wsj.com/articles/buy-borrow-die-how-the-rich-live-off-their-stock-portfolios-11626159601", type: "article", provider: "WSJ" }
+        ],
+        isQuizCompleted: false
+      },
+      {
+        id: "t10-2",
+        title: "Jurisdictional Arbitrage",
+        description: "Optimizing Legality and Mobility via Flag Theory.",
+        missionStrategy: "Distribute legal, physical, and financial presence across global jurisdictions to minimize sovereign risk.",
+        category: 'SOVEREIGN',
+        funnyTake: "The world is a shopping mall for laws. Pick the ones that treat your wealth with respect.",
+        subTopics: [
+          {
+            title: "The Jurisdictional Matrix",
+            streetExplanation: "Don't just hide your money; place it where it is legally un-touchable.",
+            boardroomExplanation: "Comparative analysis of global tax and trust frameworks for maximum asset protection.",
+            jurisdictionalMatrix: [
+              { nation: "Cook Islands", taxRate: "0%", assetProtection: "Ultimate", sovereignRisk: "Low", keyAdvantage: "Disregards all foreign civil judgments." },
+              { nation: "Singapore", taxRate: "17%", assetProtection: "Institutional", sovereignRisk: "Low", keyAdvantage: "Stable banking and zero capital gains tax." },
+              { nation: "Switzerland", taxRate: "Variable", assetProtection: "Tier-1 Legacy", sovereignRisk: "Low", keyAdvantage: "Deeply entrenched culture of financial privacy." }
+            ],
+            imagePrompt: "A high-tech terminal showing a world map with glowing nodes in gold and platinum representing sovereign jurisdictions.",
+            vocabulary: [{ word: "Arbitrage", streetAnalogy: "Buying low here, selling high there.", boardroomDefinition: "The simultaneous purchase and sale of an asset to profit from an imbalance in the price or legal treatment." }]
+          }
+        ],
+        resources: [
+          { title: "Asset Protection Trusts", url: "https://www.investopedia.com/terms/a/asset-protection-trust.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
   }
 ];

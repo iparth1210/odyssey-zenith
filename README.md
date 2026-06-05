@@ -2,28 +2,19 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Odyssey.OS v3.0 [ZENITH EDITION]
+# Run and deploy your AI Studio app
 
-### The Ultimate High-Fidelity Learning Ecosystem.
+This contains everything you need to run your app locally.
 
-Odyssey.OS integrates high-fidelity sensory feedback, neural-grid interactive depth, and cinematic immersion to create an elite workspace for architectural learning.
+View your app in AI Studio: https://ai.studio/apps/drive/168SAyXlu_VRtCM6_E1WVU_sOgue5lQBF
 
-**LIVE PLATFORM**: [**https://iparth1210.github.io/odyssey-zenith/**](https://iparth1210.github.io/odyssey-zenith/)
+## Run Locally
 
----
+**Prerequisites:**  Node.js
 
-## ⚡ Key Architecture
-- **Neural Grid Resonance**: Interactive canvas ripple arrays.
-- **Deep Work Immersion**: Cinematic focus transition matrices.
-- **Spatial Audio Protocol**: Premium haptic-audio synchronization.
-- **Luxury HUD Logic**: Precision targeting and coordinate tracking.
 
-## 🚀 Deployment Instructions
-1.  **Clone**: `git clone https://github.com/iparth1210/odyssey-zenith.git`
-2.  **Initialize**: `npm install`
-3.  **Authentication**: Add your `GEMINI_API_KEY` to `.env.local`
-4.  **Engage**: `npm run dev`
-
----
-> [!IMPORTANT]
-> **Mission Archival Complete**: Odyssey.OS is now at 100% sensory and technical mastery. 
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
