@@ -123,7 +123,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-[#050A10] text-[#E5E7EB] font-sans selection:bg-accent selection:text-bg overflow-hidden relative">
+    <div className="h-screen flex bg-[#050A10] text-[#E5E7EB] font-sans selection:bg-accent selection:text-bg overflow-hidden relative">
       
       {/* INITIAL AUTHENTICATION MODAL (REPLACES PERSONAGUIDE) */}
       <AnimatePresence>
