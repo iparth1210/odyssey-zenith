@@ -26,7 +26,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "The Economics of Barter Systems", url: "https://www.investopedia.com/terms/b/barter.asp", type: "article", provider: "Investopedia" },
               { title: "Foundations of Monetary Exchange", url: "https://www.econlib.org/library/Columns/y2006/MonetaryHistory.html", type: "article", provider: "EconLib" }
-            ]
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | London School of Economics",
+            executionBlueprint: {
+              monetization: "Facilitate direct asset swaps in private forums or trade networks, charging a convenience escrow matching fee.",
+              whatToBuy: "Physical trade commodities or high-liquidity precious metals (gold sovereigns, silver coins).",
+              howToBuy: "Acquire physical bullion from local coin dealers or reputable online vaults (e.g., APMEX, BullionVault).",
+              whenToBuy: "Buy during high geopolitical instability, debt-ceiling crises, or central bank inflationary cycles.",
+              beforeAndAfterChecklist: "Before: Check weight and assay verification certificates. After: Store in secure, climate-controlled safe deposit boxes or independent vaults.",
+              platforms: ["APMEX", "BullionVault", "Local Vaulting Services"],
+              realWorldExample: "Escrowing a collector trading a luxury watch for gold bullion, pocketing a 2% matching commission."
+            }
           },
           {
             title: "Sub-Phase 0.2: Fiat Currency and Fractional Reserves",
@@ -38,7 +48,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Fractional Reserve Banking Mechanics", url: "https://www.investopedia.com/terms/f/fractionalreservebanking.asp", type: "article", provider: "Investopedia" },
               { title: "Modern Money Mechanics (FRB)", url: "https://archive.org/details/ModernMoneyMechanics", type: "book", provider: "Federal Reserve" }
-            ]
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Wharton School Finance",
+            executionBlueprint: {
+              monetization: "Yield farming and interest-spread banking; deposit cash to capture interest while borrowing against assets to fund investments.",
+              whatToBuy: "High-yield certificates of deposit (CDs), money market fund shares, or short-term treasury bills.",
+              howToBuy: "Open a retail brokerage account (e.g., Fidelity) and purchase cash-equivalent mutual funds.",
+              whenToBuy: "Buy when central banks execute interest rate hikes, elevating short-term money yields.",
+              beforeAndAfterChecklist: "Before: Check annual percentage yield (APY) vs lock-up timelines. After: Reinvest yield dividends automatically to compound interest.",
+              platforms: ["Fidelity", "Vanguard", "Marcus by Goldman Sachs"],
+              realWorldExample: "Staking $10,000 in a high-yield CD at 5.2% APY, leveraging the deposit as collateral for a low-cost business loan."
+            }
           },
           {
             title: "Sub-Phase 0.3: Central Bank Open Market Operations",
@@ -50,7 +70,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Open Market Operations Explained", url: "https://www.federalreserve.gov/monetarypolicy/openmarket.htm", type: "article", provider: "Federal Reserve" },
               { title: "Central Bank Balance Sheets", url: "https://www.imf.org/en/Publications/WP/Issues/2016/12/31/Central-Bank-Balance-Sheet-Policy-24209", type: "paper", provider: "IMF" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Sophomore) | Harvard Department of Economics",
+            executionBlueprint: {
+              monetization: "Macro asset allocation shifts; trade index products ahead of interest rate cuts or balance sheet expansion announcements.",
+              whatToBuy: "Liquid US Treasury Exchange Traded Funds (ETFs) or Treasury Bonds.",
+              howToBuy: "Purchase Treasury ETFs (e.g., SHY, TLT) via standard retail brokerage apps (e.g., Interactive Brokers).",
+              whenToBuy: "Buy long-term treasury assets (TLT) when central banks signal a pivot from interest rate hikes to cuts.",
+              beforeAndAfterChecklist: "Before: Study FOMC policy statements and dot-plot projections. After: Monitor monthly CPI and employment reports for trend changes.",
+              platforms: ["TradingView", "Interactive Brokers", "Federal Reserve News Feed"],
+              realWorldExample: "Purchasing TLT calls prior to a Federal Reserve rate cut announcement, capturing capital appreciation as bond yields drop."
+            }
           }
         ],
         resources: [
@@ -85,7 +115,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Net Present Value Guide", url: "https://www.investopedia.com/terms/n/npv.asp", type: "article", provider: "Investopedia" },
               { title: "Time Value of Money (TVM) Concepts", url: "https://www.corporatefinanceinstitute.com/resources/valuation/time-value-of-money/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | MIT Sloan School of Management",
+            executionBlueprint: {
+              monetization: "Evaluate capital projects or commercial real estate acquisitions to isolate deals with a positive Net Present Value (NPV).",
+              whatToBuy: "Undervalued corporate debt or cash-flowing real estate assets sold below replacement cost.",
+              howToBuy: "Conduct direct private underwriting or invest through syndication platforms.",
+              whenToBuy: "Buy when cash-flow metrics yield discount rates below current market capitalization rates.",
+              beforeAndAfterChecklist: "Before: Run Excel discounting model using WACC as the hurdle rate. After: Enforce strict rent collections or operational cost controls.",
+              platforms: ["Excel Modeling Templates", "RealtyShares", "CrowdStreet"],
+              realWorldExample: "Acquiring a commercial warehouse for $2M that yields $220k annual cash flow, yielding a positive NPV under a 10% discount rate."
+            }
           },
           {
             title: "Sub-Phase 1.2: Discounted Cash Flow (DCF) Modeling",
@@ -97,7 +137,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "DCF Valuation Modeling", url: "https://www.investopedia.com/terms/d/dcf.asp", type: "article", provider: "Investopedia" },
               { title: "Damodaran Online Valuation Reference", url: "https://pages.stern.nyu.edu/~adamodar/", type: "article", provider: "NYU Stern" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Wharton Valuation Laboratory",
+            executionBlueprint: {
+              monetization: "Long-term value investing; buy equity in high-moat businesses that generate sustainable cash flows beyond the 5-year forecast horizon.",
+              whatToBuy: "Mature value stocks with robust free cash flows and low capital expenditures.",
+              howToBuy: "Purchase shares on public exchanges (NYSE/NASDAQ) using a brokerage account.",
+              whenToBuy: "Buy when public panic drops stock prices below their intrinsic DCF-calculated value.",
+              beforeAndAfterChecklist: "Before: Compute terminal value using both Gordon Growth and Exit Multiple methods. After: Verify capital expenditures relative to revenue growth quarterly.",
+              platforms: ["Bloomberg Terminal", "Fidelity", "Morningstar"],
+              realWorldExample: "Buying shares of a utility giant during a market correction when the stock trades at a 30% discount to its long-term DCF value."
+            }
           },
           {
             title: "Sub-Phase 1.3: Weighted Average Cost of Capital (WACC)",
@@ -109,7 +159,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Weighted Average Cost of Capital (WACC)", url: "https://www.investopedia.com/terms/w/wacc.asp", type: "article", provider: "Investopedia" },
               { title: "Capital Structure Decisions", url: "https://www.cfainstitute.org/en/membership/professional-development/refresher-readings/capital-structure", type: "article", provider: "CFA Institute" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Columbia Business School",
+            executionBlueprint: {
+              monetization: "Maximize corporate equity yields by utilizing interest expense write-offs to reduce taxable corporate net income.",
+              whatToBuy: "Income-generating real estate or capital-intensive companies with high depreciation and interest expenses.",
+              howToBuy: "Acquire real estate assets or shares in capital-intensive partnerships.",
+              whenToBuy: "Invest before high tax-bracket calendar years to offset taxable income.",
+              beforeAndAfterChecklist: "Before: Analyze the debt-to-equity ratio and tax rate changes. After: File corporate tax returns detailing the depreciation and interest deductions.",
+              platforms: ["TurboTax Business", "CPA Tax Ledgers", "IRS Codes"],
+              realWorldExample: "Utilizing $50,000 of mortgage interest and asset depreciation to zero-out the tax liability of a rental property portfolio."
+            }
           }
         ],
         resources: [
@@ -144,7 +204,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Bond Valuation and Yields", url: "https://www.investopedia.com/terms/y/ytm.asp", type: "article", provider: "Investopedia" },
               { title: "Fixed Income Analysis Handbook", url: "https://www.cfainstitute.org/en/programs/cfa/curriculum", type: "book", provider: "CFA Institute" }
-            ]
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | London Business School",
+            executionBlueprint: {
+              monetization: "Generate predictable cash flows by constructing a bond ladder composed of fixed-coupon sovereign or corporate debt.",
+              whatToBuy: "High-grade corporate bonds or municipal bonds that offer tax-free interest payments.",
+              howToBuy: "Buy bonds directly through treasury desks or retail brokerage platforms.",
+              whenToBuy: "Lock in high coupon rates when inflation peaks and rates are expected to decline.",
+              beforeAndAfterChecklist: "Before: Check the issuer credit rating (AAA to BBB-) and maturity date. After: Deposit coupon payments into high-yield sweep accounts to compound interest.",
+              platforms: ["TreasuryDirect", "Fidelity Bond Desk", "S&P Ratings Network"],
+              realWorldExample: "Buying a municipal bond paying a 5.5% tax-free annual coupon, generating $5,500 passive income on a $100,000 deployment."
+            }
           },
           {
             title: "Sub-Phase 2.2: The Term Structure of Interest Rates",
@@ -156,7 +226,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "The Term Structure of Interest Rates", url: "https://www.investopedia.com/terms/y/yieldcurve.asp", type: "article", provider: "Investopedia" },
               { title: "Yield Curve Inversion Mechanics", url: "https://www.newyorkfed.org/research/capital_markets/ycandrecession.html", type: "article", provider: "NY Fed" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Sophomore) | Yale Department of Economics",
+            executionBlueprint: {
+              monetization: "Recession hedging; rotate capital from cyclical equities into defensive sectors (utilities, staples) or cash equivalents during yield inversions.",
+              whatToBuy: "Defensive sector ETFs (e.g., XLU) or short-term treasury bills.",
+              howToBuy: "Buy defensive stock ETFs or treasury assets via standard trading platforms.",
+              whenToBuy: "Buy defensive assets when the 10Y-2Y yield spread drops below zero (inverts).",
+              beforeAndAfterChecklist: "Before: Check yield spread data daily on economic databases. After: Re-evaluate equity positions if the curve remains inverted for more than three months.",
+              platforms: ["FRED (Federal Reserve Economic Data)", "TradingView", "Fidelity"],
+              realWorldExample: "Rotating 50% of an equity portfolio into Treasury Bills when the 10Y-2Y spread hits -0.50%, shielding capital from the subsequent bear market."
+            }
           },
           {
             title: "Sub-Phase 2.3: Leverage & Debt Covenants",
@@ -168,7 +248,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Leverage and Capital Optimization", url: "https://www.investopedia.com/terms/f/financialleverage.asp", type: "article", provider: "Investopedia" },
               { title: "Debt Covenants and Credit Risk", url: "https://www.corporatefinanceinstitute.com/resources/commercial-lending/debt-covenants/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | NYU Stern School of Business",
+            executionBlueprint: {
+              monetization: "Mitigate lending risk by underwriting senior secured loans with strict financial performance constraints for the borrowing company.",
+              whatToBuy: "Syndicated corporate loans or high-yield private credit notes.",
+              howToBuy: "Participate in private lending syndicates or accredited investor credit platforms.",
+              whenToBuy: "Invest when credit spreads are wide, indicating that lenders are demanding higher premiums for risk.",
+              beforeAndAfterChecklist: "Before: Review loan agreement covenants (e.g., max Leverage Ratio of 3.5x). After: Monitor quarterly debt service coverage reports from the borrower.",
+              platforms: ["Percent", "Yieldstreet", "Bloomberg Terminal"],
+              realWorldExample: "Extending a $150,000 growth loan to a tech startup, secured by IP and conditional on the company maintaining a minimum cash balance of $250,000."
+            }
           }
         ],
         resources: [
@@ -203,7 +293,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Portfolio Variance Mathematics", url: "https://www.investopedia.com/terms/p/portfolio-variance.asp", type: "article", provider: "Investopedia" },
               { title: "The Math of Diversification", url: "https://www.sec.gov/investor/pubs/introtodivers.htm", type: "article", provider: "SEC" }
-            ]
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | Stanford Quantitative Finance",
+            executionBlueprint: {
+              monetization: "Portfolio risk reduction; pair negatively correlated assets (e.g., gold and tech stocks) to reduce aggregate portfolio volatility.",
+              whatToBuy: "Gold ETFs (GLD) and broad equity market index ETFs (SPY).",
+              howToBuy: "Buy standard shares via Robinhood, Vanguard, or Schwab.",
+              whenToBuy: "Build a diversified core portfolio during bull markets to prepare for macro shocks.",
+              beforeAndAfterChecklist: "Before: Compute correlation matrix in Excel or using online tools. After: Rebalance the asset weights annually to maintain the target risk profile.",
+              platforms: ["Portfolio Visualizer", "Excel", "Vanguard"],
+              realWorldExample: "Allocating 80% to SPY and 20% to GLD, reducing the portfolio drop during a stock market correction because gold prices rose concurrently."
+            }
           },
           {
             title: "Sub-Phase 3.2: Modern Portfolio Theory & Efficient Frontier",
@@ -215,7 +315,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Modern Portfolio Theory Principles", url: "https://www.investopedia.com/terms/m/modernportfoliotheory.asp", type: "article", provider: "Investopedia" },
               { title: "Efficient Frontier Optimization", url: "https://www.corporatefinanceinstitute.com/resources/wealth-management/efficient-frontier/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Senior) | Princeton Bendheim Center for Finance",
+            executionBlueprint: {
+              monetization: "Optimize asset allocations mathematically to secure the highest expected return for your selected risk threshold.",
+              whatToBuy: "A diversified mix of international stocks, domestic bonds, commodities, and real estate ETFs.",
+              howToBuy: "Purchase target asset index funds through retail or robo-advisory accounts.",
+              whenToBuy: "Apply portfolio optimization models during annual portfolio reviews and rebalancing phases.",
+              beforeAndAfterChecklist: "Before: Input asset return variances and covariance metrics into optimization software. After: Rebalance assets when allocations drift by more than 5% from targets.",
+              platforms: ["Portfolio Visualizer", "Wealthfront", "Betterment"],
+              realWorldExample: "Using Markowitz optimization to adjust a portfolio from 100% S&P 500 to a balanced global mix, increasing long-term Sharpe ratio from 0.85 to 1.15."
+            }
           },
           {
             title: "Sub-Phase 3.3: CAPM & Sharpe Ratio",
@@ -227,7 +337,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Capital Asset Pricing Model (CAPM)", url: "https://www.investopedia.com/terms/c/capm.asp", type: "article", provider: "Investopedia" },
               { title: "Measuring Risk-Adjusted Returns (Sharpe)", url: "https://www.cfainstitute.org/en/research/financial-analysts-journal", type: "article", provider: "CFA Institute" }
-            ]
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Chicago Booth School of Business",
+            executionBlueprint: {
+              monetization: "Leverage trading; buy high-beta stocks during early-stage economic expansions to capture outsized gains, and switch to low-beta utilities during declines.",
+              whatToBuy: "High-beta technology ETFs (QQQ) or low-beta consumer staples ETFs (XLP).",
+              howToBuy: "Buy ETF shares using retail brokerage accounts.",
+              whenToBuy: "Shift to high-beta assets when macroeconomic indicators signal positive growth expansions.",
+              beforeAndAfterChecklist: "Before: Check the historical beta metric of the target asset on finance sites. After: Apply trailing stops to high-beta assets to protect capital from sharp reversals.",
+              platforms: ["Yahoo Finance", "TradingView", "Fidelity"],
+              realWorldExample: "Purchasing Nvidia shares (Beta of 1.7) during a tech rally, capturing returns that significantly outperformed the S&P 500 (Beta of 1.0)."
+            }
           }
         ],
         resources: [
@@ -262,7 +382,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Options Contract Basics", url: "https://www.investopedia.com/terms/o/option.asp", type: "article", provider: "Investopedia" },
               { title: "CBOE Options Trading Guide", url: "https://www.cboe.com/education/", type: "article", provider: "CBOE" }
-            ]
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Oxford Said Business School",
+            executionBlueprint: {
+              monetization: "Income generation; sell covered call options at strike prices above the current market price of your stock holdings to collect premiums.",
+              whatToBuy: "100 shares of a stable dividend stock (e.g., Apple, Microsoft) and call options.",
+              howToBuy: "Enable options trading on your brokerage account and execute a 'Covered Call' trade.",
+              whenToBuy: "Sell covered calls when the stock price spikes and implied volatility is high.",
+              beforeAndAfterChecklist: "Before: Verify stock average purchase price is below option strike price. After: If stock crosses the strike price at expiration, prepare for shares to be sold at strike.",
+              platforms: ["Thinkorswim by Charles Schwab", "Robinhood Options", "Webull"],
+              realWorldExample: "Buying Apple stock at $180, selling a $190 covered call for a $3 premium, yielding $300 immediate cash income."
+            }
           },
           {
             title: "Sub-Phase 4.2: Black-Scholes Pricing Model",
@@ -274,7 +404,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Black-Scholes Model Formulation", url: "https://www.investopedia.com/terms/b/blackscholes.asp", type: "article", provider: "Investopedia" },
               { title: "Option Pricing Differential Equations", url: "https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/", type: "paper", provider: "MIT OCW" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | MIT Sloan Quantitative Finance",
+            executionBlueprint: {
+              monetization: "Volatility arbitrage; sell options when implied volatility (IV) is high relative to historical volatility, pocketing rich premiums.",
+              whatToBuy: "Option credit spreads (Iron Condors, Vertical Spreads) on major market indices (SPX).",
+              howToBuy: "Execute option spread trades on professional broker platforms.",
+              whenToBuy: "Sell credit spreads during corporate earnings season or market panics when IV is elevated.",
+              beforeAndAfterChecklist: "Before: Verify current IV Rank (IVR) is above 50%. After: Close positions when 50% of maximum profit is captured to reduce duration risk.",
+              platforms: ["tastytrade", "Thinkorswim", "CBOE Volatility Index (VIX) Feed"],
+              realWorldExample: "Selling an SPX Iron Condor when VIX hits 30, capturing rapid premium decay as the market calms down and VIX drops back to 15."
+            }
           },
           {
             title: "Sub-Phase 4.3: Delta Hedging & Greek Ratios",
@@ -286,7 +426,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Delta Hedging Strategies", url: "https://www.investopedia.com/terms/d/deltahedging.asp", type: "article", provider: "Investopedia" },
               { title: "Understanding Option Greeks", url: "https://www.corporatefinanceinstitute.com/resources/derivatives/option-greeks/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | Berkeley Haas School of Business",
+            executionBlueprint: {
+              monetization: "Premium decay collection; write short-duration options contracts (30-45 days to expiration) to exploit the accelerating curve of time decay.",
+              whatToBuy: "Out-of-the-money put option contracts on liquid ETFs (SPY, QQQ).",
+              howToBuy: "Sell naked puts or put credit spreads via options brokerage platforms.",
+              whenToBuy: "Sell contracts between 30 and 45 days before expiration, as Theta decay accelerates rapidly during this window.",
+              beforeAndAfterChecklist: "Before: Check underlying asset support levels and macro factors. After: Manage or roll the position at 21 days to expiration if tested.",
+              platforms: ["tastytrade", "Thinkorswim", "OptionStrat"],
+              realWorldExample: "Selling a 30-day out-of-the-money SPY put option for $4.00, collecting $400 in premium as the option value decays to zero over the month."
+            }
           }
         ],
         resources: [
@@ -321,7 +471,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Leveraged Buyout (LBO) Modeling", url: "https://www.investopedia.com/terms/l/lbo.asp", type: "article", provider: "Investopedia" },
               { title: "Private Equity Buyout Analysis", url: "https://www.corporatefinanceinstitute.com/resources/valuation/lbo-model-leveraged-buyout/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Harvard Business School M&A Lab",
+            executionBlueprint: {
+              monetization: "Acquire brick-and-mortar cash-flowing businesses using partner debt, optimizing operations to pay off debt and exit at a higher multiple.",
+              whatToBuy: "Small-to-medium enterprises (SMEs) with clean books, stable cash flow, and zero debt.",
+              howToBuy: "Arrange acquisition financing with local banks, SBA loans, or private investors.",
+              whenToBuy: "Acquire businesses during transition phases (e.g., retirement of founder-owners).",
+              beforeAndAfterChecklist: "Before: Conduct exhaustive financial audit and verify debt capacity (e.g., Debt-to-EBITDA of 3x). After: Implement strict corporate cash controls and repay debt.",
+              platforms: ["BizBuySell", "Broker Networks", "SBA Loan Portals"],
+              realWorldExample: "Acquiring a local HVAC service business for $1.5M using $1.2M in bank debt and $300k equity, paying off debt from business cash flow over 5 years."
+            }
           },
           {
             title: "Sub-Phase 5.2: Mergers & Acquisitions Synergy Analysis",
@@ -333,7 +493,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "M&A Deal Structuring and Valuation", url: "https://www.investopedia.com/terms/m/mergersandacquisitions.asp", type: "article", provider: "Investopedia" },
               { title: "Synergy Estimation in Mergers", url: "https://pages.stern.nyu.edu/~adamodar/pdfiles/papers/synergy.pdf", type: "paper", provider: "NYU Stern" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Wharton M&A Laboratory",
+            executionBlueprint: {
+              monetization: "Consolidation arbitrage; execute roll-up acquisitions of smaller competitors using high-multiple equity, driving up consolidated earnings per share.",
+              whatToBuy: "Accretive competitor acquisitions with lower P/E ratios than the acquiring firm.",
+              howToBuy: "Execute corporate stock mergers or direct asset purchases.",
+              whenToBuy: "Acquire when market consolidation generates significant cost synergies (reductions in duplicate overhead).",
+              beforeAndAfterChecklist: "Before: Model accretive/dilutive spreadsheet showing combined EPS metrics. After: Integrate IT, back-office, and sales networks within 180 days.",
+              platforms: ["Bloomberg Terminal", "PitchBook", "Excel M&A Models"],
+              realWorldExample: "A public company trading at 25x earnings buys a competitor trading at 8x earnings, increasing the acquirer's EPS by 12% post-merger."
+            }
           },
           {
             title: "Sub-Phase 5.3: Venture Capital & Cap Table Valuation",
@@ -345,7 +515,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Startup Capitalization Tables", url: "https://www.investopedia.com/terms/c/capitalization-table.asp", type: "article", provider: "Investopedia" },
               { title: "Venture Capital Term Sheets", url: "https://www.nvca.org/model-legal-documents/", type: "whitepaper", provider: "NVCA" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Senior) | Stanford Venture Capital Lab",
+            executionBlueprint: {
+              monetization: "Early-stage startup investing; capture equity stakes in promising startups and negotiate dilution protection clauses.",
+              whatToBuy: "Convertible notes or SAFE notes in early-stage seed startups.",
+              howToBuy: "Invest through angel syndicates, venture funds, or direct placement.",
+              whenToBuy: "Invest during pre-seed or seed stages when valuations are lowest.",
+              beforeAndAfterChecklist: "Before: Verify cap table ownership, option pools, and liquidation preferences. After: Maintain active advisory touchpoints with startup founders.",
+              platforms: ["Carta", "AngelList", "Republic"],
+              realWorldExample: "Investing $25,000 via a SAFE note at a $5M valuation cap, converting into 0.5% equity ownership during the startup's Series A round."
+            }
           }
         ],
         resources: [
@@ -380,7 +560,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "The Taylor Rule and Rate Settings", url: "https://www.investopedia.com/terms/t/taylorrule.asp", type: "article", provider: "Investopedia" },
               { title: "Discretion versus Policy Rules in Practice", url: "https://web.stanford.edu/~johntayl/Papers/DiscretionVersusPolicyRulesInPractice.pdf", type: "paper", provider: "Stanford" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | MIT Department of Economics",
+            executionBlueprint: {
+              monetization: "Macro commodities trading; go long on hard assets (oil, gold, real estate) during rising inflation gaps when central bank rates lag CPI.",
+              whatToBuy: "Commodity ETFs (DBC) or physical gold/real estate assets.",
+              howToBuy: "Buy commodity contracts or ETFs via standard brokerage accounts.",
+              whenToBuy: "Buy commodities when CPI inflation print rises faster than the central bank's target rate.",
+              beforeAndAfterChecklist: "Before: Check the Taylor Rule output vs current Fed Funds rate. After: Exit long positions when central banks initiate aggressive rate hikes.",
+              platforms: ["FRED Economic Database", "TradingView", "Bloomberg"],
+              realWorldExample: "Purchasing crude oil futures when CPI hit 6% while interest rates sat at 0.25%, capturing the commodity spike before the Fed hiked rates."
+            }
           },
           {
             title: "Sub-Phase 6.2: Quantitative Easing & Balance Sheets",
@@ -392,7 +582,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Quantitative Easing Policies", url: "https://www.investopedia.com/terms/q/quantitative-easing.asp", type: "article", provider: "Investopedia" },
               { title: "Federal Reserve Balance Sheet Disclosures", url: "https://www.federalreserve.gov/monetarypolicy/bst_recenttrends.htm", type: "article", provider: "Fed" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Senior) | LSE Monetary Economics",
+            executionBlueprint: {
+              monetization: "Asset price inflation play; buy growth equities and crypto assets when central banks announce balance sheet expansions (QE).",
+              whatToBuy: "Technology growth stock index funds (QQQ) or Bitcoin (BTC).",
+              howToBuy: "Acquire assets via public stock accounts or regulated digital asset exchanges.",
+              whenToBuy: "Buy growth assets immediately upon central bank QE announcements.",
+              beforeAndAfterChecklist: "Before: Monitor Fed balance sheet updates (H.4.1 release). After: Rotate to cash or short-term bills when central banks announce quantitative tightening (QT).",
+              platforms: ["Federal Reserve H.4.1 Release", "TradingView", "Coinbase"],
+              realWorldExample: "Allocating 20% capital to BTC and tech growth stocks in March 2020 as the Federal Reserve initiated $3T in emergency QE, riding the liquidity wave."
+            }
           },
           {
             title: "Sub-Phase 6.3: Balance of Payments & Forex Transmission",
@@ -404,7 +604,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Balance of Payments Theory", url: "https://www.investopedia.com/terms/b/balanceofpayments.asp", type: "article", provider: "Investopedia" },
               { title: "Forex Market Structure", url: "https://www.bis.org/publ/rpfx22.htm", type: "whitepaper", provider: "BIS" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | Cambridge Faculty of Economics",
+            executionBlueprint: {
+              monetization: "Carry trade; borrow in low-interest currencies (e.g., Japanese Yen) and invest in high-yield currencies (e.g., US Dollar) to capture interest rate spreads.",
+              whatToBuy: "USD/JPY currency pairs or interest-yielding foreign sovereign debt.",
+              howToBuy: "Execute currency exchange and leverage positions on global forex platforms.",
+              whenToBuy: "Buy carry pairs when yield spreads are widening and currency volatility is low.",
+              beforeAndAfterChecklist: "Before: Verify interest rate policies of the respective central banks (BOJ vs Fed). After: Set tight stop losses to protect against sudden currency devaluations.",
+              platforms: ["OANDA", "Interactive Brokers Forex Desk", "DailyFX"],
+              realWorldExample: "Borrowing Japanese Yen at 0.1% interest, converting to USD, and purchasing US Treasuries yield 5.25%, netting a clean interest spread."
+            }
           }
         ],
         resources: [
@@ -439,7 +649,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Limit Order Book Mechanics", url: "https://www.investopedia.com/terms/l/limitorderbook.asp", type: "article", provider: "Investopedia" },
               { title: "Order Matching Algorithms", url: "https://math.nyu.edu/~avellane/microstructure.pdf", type: "paper", provider: "NYU Courant" }
-            ]
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | MIT Computer Science Lab",
+            executionBlueprint: {
+              monetization: "Arbitrage slippage reduction; use limit orders to buy at target support zones, avoiding the high slippage costs of market orders during volatile news.",
+              whatToBuy: "Highly liquid index ETFs (SPY, QQQ) or large cap stocks.",
+              howToBuy: "Set a 'Limit Order' on your broker platform instead of choosing a 'Market Order'.",
+              whenToBuy: "Place limit orders below current price action during market consolidations.",
+              beforeAndAfterChecklist: "Before: Check bid-ask depth and average daily volume. After: Review execution fill price to verify zero slippage costs occurred.",
+              platforms: ["Thinkorswim", "Interactive Brokers L2 Desk", "TradingView"],
+              realWorldExample: "Avoiding a $500 execution slippage loss during a stock earnings release by placing a strict limit order at $150.00 instead of a market buy."
+            }
           },
           {
             title: "Sub-Phase 7.2: Bid-Ask Spreads & Market Making",
@@ -451,7 +671,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Bid-Ask Spread Determinants", url: "https://www.investopedia.com/terms/b/bid-askspread.asp", type: "article", provider: "Investopedia" },
               { title: "Market Making and Inventory Risk", url: "https://pages.stern.nyu.edu/~adamodar/pdfiles/cf2ev.pdf", type: "paper", provider: "NYU Stern" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Princeton Quantitative Finance Lab",
+            executionBlueprint: {
+              monetization: "Liquidity provisioning; run market-making algorithms or provide liquidity to decentralized pools to capture bid-ask spreads.",
+              whatToBuy: "Two-sided asset pairs (e.g., USDC and ETH) for liquidity pools.",
+              howToBuy: "Deploy assets to Uniswap V3 concentrated liquidity positions or configure institutional API keys.",
+              whenToBuy: "Provide liquidity during high-volume, sideways-moving markets to maximize fee capture.",
+              beforeAndAfterChecklist: "Before: Calculate expected volatility and impermanent loss bounds. After: Rebalance inventory when asset prices trend strongly.",
+              platforms: ["Uniswap Info", "Hummingbot (AMM Algo)", "Interactive Brokers API"],
+              realWorldExample: "Deploying $20,000 into a Uniswap V3 USDC/ETH pool with a tight price range, collecting 0.3% transaction fees on all trade volume."
+            }
           },
           {
             title: "Sub-Phase 7.3: HFT & Latency Arbitrage",
@@ -463,7 +693,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "High-Frequency Trading Overview", url: "https://www.investopedia.com/terms/h/high-frequency-trading.asp", type: "article", provider: "Investopedia" },
               { title: "Latency Arbitrage and Market Fragmentation", url: "https://www.sec.gov/marketstructure/research/hft_lit_review.pdf", type: "whitepaper", provider: "SEC" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | MIT High-Frequency Systems Lab",
+            executionBlueprint: {
+              monetization: "Execute algorithmic delta-neutral strategies that rely on speed advantages to trade across fragmented exchanges.",
+              whatToBuy: "Liquid derivative instruments and exchange server rack leases.",
+              howToBuy: "Purchase server hosting slots directly from exchange data centers (e.g., Carteret, NJ).",
+              whenToBuy: "Deploy algorithms when high market fragmentation increases arbitrage spreads.",
+              beforeAndAfterChecklist: "Before: Test network latency (sub-millisecond pings). After: Continuously audit algorithmic logic to prevent runaway trading loops.",
+              platforms: ["Equinix Data Centers", "CME Group Co-Location", "FPGA Hardware compilers"],
+              realWorldExample: "Deploying an arbitrage script on a server leased inside the Equinix NY4 data center, shaving latency to capture price spreads on NYSE vs NASDAQ."
+            }
           }
         ],
         resources: [
@@ -498,7 +738,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Hedge Fund Arbitrage Strategies", url: "https://www.investopedia.com/terms/h/hedgefund.asp", type: "article", provider: "Investopedia" },
               { title: "Absolute Return and Risk Parity", url: "https://www.bridgewater.com/research-and-insights/the-all-weather-story", type: "whitepaper", provider: "Bridgewater" }
-            ]
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Harvard Business School Hedge Fund Lab",
+            executionBlueprint: {
+              monetization: "Short overvalued companies that exhibit deteriorating fundamentals, aggressive accounting, or structural industry decay.",
+              whatToBuy: "Short positions on equity shares or put options on weak companies.",
+              howToBuy: "Execute a 'Sell Short' order on your broker platform, borrowing shares to sell immediately.",
+              whenToBuy: "Short assets when earnings growth slows and the stock breaks below major technical support levels (e.g., 200-day moving average).",
+              beforeAndAfterChecklist: "Before: Check hard-to-borrow fees and short interest ratio. After: Enforce strict trailing stop losses to protect against short squeezes.",
+              platforms: ["Interactive Brokers", "TradeStation", "Ortex Short Interest Feed"],
+              realWorldExample: "Shorting a failing retail chain's stock at $50, buying back shares at $10 to close the trade, capturing a 400% return on capital."
+            }
           },
           {
             title: "Sub-Phase 8.2: Private Equity Hurdle Rates & Carry",
@@ -510,7 +760,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Private Equity Profit Allocations", url: "https://www.investopedia.com/terms/c/carriedinterest.asp", type: "article", provider: "Investopedia" },
               { title: "Hurdle Rates and Waterfall Distributions", url: "https://www.corporatefinanceinstitute.com/resources/wealth-management/distribution-waterfall/", type: "article", provider: "CFI" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Wharton Private Equity Research",
+            executionBlueprint: {
+              monetization: "Private Equity general partnership; raise and manage a fund to acquire underperforming companies, taking a 20% cut of net profits (carry) upon exits.",
+              whatToBuy: "Private companies with operational inefficiencies, stable cash flows, or consolidation potential.",
+              howToBuy: "Form a General Partnership (GP) entity, write a Private Placement Memorandum, and raise capital from Limited Partners (LPs).",
+              whenToBuy: "Deploy capital during economic downturns when acquisition multiples are depressed.",
+              beforeAndAfterChecklist: "Before: Underwrite the transaction to target a minimum 20% Net IRR. After: Execute structural reorganization to streamline acquired operations.",
+              platforms: ["Carta Fund Admin", "PitchBook", "Preqin Private Capital"],
+              realWorldExample: "Exiting an acquired manufacturing plant for a $10M profit, distributing the principal and 8% hurdle to LPs, and pocketing $2M in carried interest."
+            }
           },
           {
             title: "Sub-Phase 8.3: Venture Debt & Private Credit Structuring",
@@ -522,7 +782,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Venture Debt and Warrants", url: "https://www.investopedia.com/terms/v/venture-debt.asp", type: "article", provider: "Investopedia" },
               { title: "Private Credit Market Growth", url: "https://www.imf.org/en/Publications/GFSR/Issues/2024/04/16/global-financial-stability-report-april-2024", type: "whitepaper", provider: "IMF" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Senior) | Oxford Finance Laboratory",
+            executionBlueprint: {
+              monetization: "Venture debt financing; extend growth loans to private companies while securing warrants to capture equity upsides.",
+              whatToBuy: "Senior secured debt notes with attached stock purchase warrants.",
+              howToBuy: "Underwrite direct credit placements via private investment structures.",
+              whenToBuy: "Lend to late-stage startups that need non-dilutive capital to bridge to an IPO or acquisition.",
+              beforeAndAfterChecklist: "Before: Secure first-priority lien on all company assets and intellectual property. After: Monitor monthly burn rate and runway metrics of the company.",
+              platforms: ["Carta", "PitchBook", "Private Credit Advisory Services"],
+              realWorldExample: "Lending $1M to a SaaS startup at 12% interest, securing warrants to buy 1% of company stock for $1, which exits at $500,000 during a buyout."
+            }
           }
         ],
         resources: [
@@ -557,7 +827,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Blockchain Technology Principles", url: "https://www.investopedia.com/terms/b/blockchain.asp", type: "article", provider: "Investopedia" },
               { title: "Bitcoin: A Peer-to-Peer Electronic Cash System", url: "https://bitcoin.org/bitcoin.pdf", type: "whitepaper", provider: "Satoshi Nakamoto" }
-            ]
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | Stanford Blockchain Research Centre",
+            executionBlueprint: {
+              monetization: "Secure blockchain ledger databases and earn validation rewards by running node infrastructure (staking).",
+              whatToBuy: "Cryptographic assets required for staking consensus (e.g., Ethereum).",
+              howToBuy: "Acquire ETH via regulated platforms, and stake directly or via validator pools.",
+              whenToBuy: "Acquire staking assets during market bottoms or protocol upgrades.",
+              beforeAndAfterChecklist: "Before: Check node uptime history and validator commission rates. After: Monitor validator metrics to avoid slashing penalties.",
+              platforms: ["Lido Finance", "Rocket Pool", "Allnodes (Validator Hosting)"],
+              realWorldExample: "Staking 32 ETH to run an independent validator node, generating a consistent 4% annual reward paid in native blockchain tokens."
+            }
           },
           {
             title: "Sub-Phase 9.2: Smart Contracts & Ethereum EVM",
@@ -569,7 +849,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Smart Contract Specifications", url: "https://www.investopedia.com/terms/s/smart-contracts.asp", type: "article", provider: "Investopedia" },
               { title: "Ethereum Whitepaper", url: "https://ethereum.org/en/whitepaper/", type: "whitepaper", provider: "Vitalik Buterin" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | MIT Digital Currency Initiative",
+            executionBlueprint: {
+              monetization: "Build and deploy trustless financial software (dApps) to automate lending or trading, collecting protocol fee cuts.",
+              whatToBuy: "Smart contract development tools, gas optimization tokens, and auditor reviews.",
+              howToBuy: "Write code in Solidity/Rust, test on testnets, and deploy directly to mainnet.",
+              whenToBuy: "Deploy smart contracts during periods of high developer activity and stable network fees.",
+              beforeAndAfterChecklist: "Before: Obtain a comprehensive third-party smart contract audit. After: Monitor real-time transaction telemetry for protocol exploit attempts.",
+              platforms: ["OpenZeppelin Library", "Hardhat Development Environment", "CertiK Auditor Network"],
+              realWorldExample: "Deploying a decentralized lending smart contract that handles $5M in collateral, generating $50,000 in transaction fee revenue for the creator."
+            }
           },
           {
             title: "Sub-Phase 9.3: Automated Market Makers (AMM)",
@@ -581,7 +871,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Automated Market Maker (AMM) Algorithms", url: "https://www.investopedia.com/terms/a/automated-market-maker-amm.asp", type: "article", provider: "Investopedia" },
               { title: "Constant Product Market Maker Math", url: "https://github.com/runtimeverification/uniswap-semantics/blob/master/uniswap.pdf", type: "paper", provider: "Runtime Verification" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Senior) | Cambridge Centre for Alternative Finance",
+            executionBlueprint: {
+              monetization: "Hedging AMM positions; hedge long liquidity provider (LP) assets on decentralized exchanges by shorting asset swings on futures markets.",
+              whatToBuy: "LP tokens from AMM pools and matching short options/futures.",
+              howToBuy: "Deposit pairs to Uniswap V3, and open equal short hedges on dYdX or Binance Futures.",
+              whenToBuy: "Enter hedged LP positions when trading volumes are high but asset prices remain range-bound.",
+              beforeAndAfterChecklist: "Before: Calculate expected transaction fees vs impermanent loss formulas. After: Close LP positions if asset price drifts beyond the hedged range.",
+              platforms: ["Uniswap Info", "dYdX (Perpetual Futures)", "IL Calculators"],
+              realWorldExample: "LPing ETH/USDC while shorting ETH futures, collecting 30% yield from trading fees while neutralizing price fluctuation risks."
+            }
           }
         ],
         resources: [
@@ -616,7 +916,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Securities-Based Lending Overview", url: "https://www.investopedia.com/terms/s/securitiesbased-line-of-credit.asp", type: "article", provider: "Investopedia" },
               { title: "Leveraged Portfolio Debt Strategies", url: "https://www.sec.gov/oiea/investor-alerts-bulletins/ib_sbloc", type: "article", provider: "SEC" }
-            ]
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | Harvard Private Wealth Center",
+            executionBlueprint: {
+              monetization: "Access tax-free cash liquidity to fund asset acquisitions by borrowing against a public stock portfolio.",
+              whatToBuy: "Blue-chip equity ETFs (SPY, VOO) and a Securities-Based Line of Credit (SBLOC).",
+              howToBuy: "Build a portfolio with an asset broker, then apply for an SBLOC line of credit.",
+              whenToBuy: "Draw cash when assets have appreciated and interest rates are low.",
+              beforeAndAfterChecklist: "Before: Verify Loan-To-Value (LTV) ratio is below 30% to prevent margin calls. After: Use drawn cash to acquire cash-flowing real estate to pay off loan interest.",
+              platforms: ["Interactive Brokers SBLOC Desk", "Charles Schwab Bank", "Fidelity Wealth"],
+              realWorldExample: "Borrowing $150,000 against a $600,000 SPY portfolio at 5% interest to buy a rental property, avoiding $30,000 in immediate capital gains taxes."
+            }
           },
           {
             title: "Sub-Phase 10.2: Private Placement Life Insurance (PPLI)",
@@ -628,7 +938,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Private Placement Life Insurance (PPLI)", url: "https://www.investopedia.com/terms/p/private-placement-life-insurance.asp", type: "article", provider: "Investopedia" },
               { title: "Asset Shielding via Variable Insurance wrappers", url: "https://www.irs.gov/retirement-plans/irc-section-7702-life-insurance-contracts", type: "article", provider: "IRS" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Wharton Wealth Management",
+            executionBlueprint: {
+              monetization: "Shield multi-million dollar investment portfolios from income and capital gains tax by wrapping them in life insurance policies.",
+              whatToBuy: "Private Placement Life Insurance (PPLI) policies and underlying hedge fund allocations.",
+              howToBuy: "Structure a custom PPLI policy with a specialized offshore insurance broker.",
+              whenToBuy: "Establish structures when net worth crosses $5M to justify structure administration costs.",
+              beforeAndAfterChecklist: "Before: Verify policy complies with investor control and diversification tax codes. After: Fund the policy with cash/securities; pass assets tax-free to beneficiaries.",
+              platforms: ["Lombard Odier PPLI", "Swiss Life International", "Offshore Legal Counsels"],
+              realWorldExample: "Wrapping a $10M hedge fund allocation inside a Swiss PPLI wrapper, compounding annual gains tax-free and passing the full sum to heirs tax-free."
+            }
           },
           {
             title: "Sub-Phase 10.3: Jurisdictional Flag Theory & Asset Trusts",
@@ -643,7 +963,17 @@ export const CURRICULUM: Level[] = [
             resources: [
               { title: "Jurisdictional Flag Theory Principles", url: "https://en.wikipedia.org/wiki/Flag_theory", type: "article", provider: "Wikipedia" },
               { title: "Offshore Wealth Trusts and Custody Law", url: "https://www.taxjustice.net/wp-content/uploads/2013/02/TJN_1302_Trusts_Brochure_Web.pdf", type: "whitepaper", provider: "Tax Justice Network" }
-            ]
+            ],
+            academicTier: "Tier 4: Ivy League MBA | Cook Islands Trust Advisory",
+            executionBlueprint: {
+              monetization: "Legally insulate capital from domestic litigation and sovereign tax claims by placing assets in international trust vehicles.",
+              whatToBuy: "Offshore trust structures, secondary residencies, and foreign banking nodes.",
+              howToBuy: "Hire specialized international trust attorneys to draft trust deeds in asset-protective jurisdictions.",
+              whenToBuy: "Establish trust structures before any civil litigation or tax audit is initiated.",
+              beforeAndAfterChecklist: "Before: Complete full background KYC and verify clean source of wealth. After: Transfer ownership of major assets (shares, cash) to the offshore trustee.",
+              platforms: ["Southpac Trust (Cook Islands)", "Asiaciti Trust (Singapore)", "Offshore Trust Attorney Desk"],
+              realWorldExample: "Setting up a Cook Islands Asset Protection Trust holding a brokerage account, rendering the capital legally immune to foreign civil judgments."
+            }
           }
         ],
         resources: [

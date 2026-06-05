@@ -13,6 +13,16 @@ export interface Resource {
   fallbackSummary?: string;
 }
 
+export interface ExecutionBlueprint {
+  monetization: string;
+  whatToBuy: string;
+  howToBuy: string;
+  whenToBuy: string;
+  beforeAndAfterChecklist: string;
+  platforms: string[];
+  realWorldExample: string;
+}
+
 export interface VocabularyTerm {
   word: string;
   streetAnalogy: string;
@@ -40,6 +50,8 @@ export interface SubTopic {
   isShadow?: boolean;
   jurisdictionalMatrix?: JurisdictionalNode[];
   resources?: Resource[];
+  academicTier?: string;
+  executionBlueprint?: ExecutionBlueprint;
 }
 
 export interface Topic {

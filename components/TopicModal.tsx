@@ -39,7 +39,14 @@ const SubTopicModule: React.FC<{ sub: SubTopic }> = ({ sub }) => {
 
   return (
     <div ref={containerRef} className="p-8 lg:p-14 glass-terminal rounded-[40px] lg:rounded-[48px] border-white/10 space-y-10 lg:space-y-12 relative overflow-hidden group">
-      <h3 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase font-display">{sub.title}</h3>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
+        <h3 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase font-display">{sub.title}</h3>
+        {sub.academicTier && (
+          <div className="self-start sm:self-center px-4 py-1.5 bg-accent/10 border border-accent/30 rounded-full text-[10px] font-black text-accent uppercase tracking-widest select-none">
+            {sub.academicTier}
+          </div>
+        )}
+      </div>
 
       {sub.jurisdictionalMatrix ? (
         <div className="border border-white/10 rounded-[24px] overflow-hidden bg-black/50 shadow-inner overflow-x-auto custom-scrollbar">
@@ -115,6 +122,55 @@ const SubTopicModule: React.FC<{ sub: SubTopic }> = ({ sub }) => {
                 <span className="text-[8px] font-black uppercase text-accent/50 group-hover:text-accent shrink-0 border border-accent/20 px-3 py-1 rounded bg-accent/5">{res.provider || 'LINK'}</span>
               </a>
             ))}
+          </div>
+        </div>
+      )}
+
+      {sub.executionBlueprint && (
+        <div className="space-y-6 relative z-10 border-t border-white/5 pt-8">
+          <span className="text-[9px] font-black text-accent uppercase tracking-[0.5em] block">Sovereign Execution Directive</span>
+          <div className="p-6 lg:p-10 rounded-[32px] bg-white/[0.01] border border-white/10 space-y-8 shadow-inner">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">1. Monetization Pathway (How to Earn)</span>
+                <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.monetization}</p>
+              </div>
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">2. Strategic Target & Selection (What to Buy)</span>
+                <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.whatToBuy}</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/5 pt-6">
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">3. Tactical Routing (How to Buy)</span>
+                <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.howToBuy}</p>
+              </div>
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">4. Entry/Exit Timing Matrix (When to Buy)</span>
+                <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.whenToBuy}</p>
+              </div>
+            </div>
+
+            <div className="space-y-3 border-t border-white/5 pt-6">
+              <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">5. Operative Checklist (Before & After Protocols)</span>
+              <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.beforeAndAfterChecklist}</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-white/5 pt-6">
+              <div className="space-y-3">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">6. Approved Intelligence Platforms</span>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {sub.executionBlueprint.platforms.map((platform, i) => (
+                    <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-lg text-[10px] text-white font-mono uppercase tracking-wider">{platform}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <span className="text-[10px] font-black text-accent/60 uppercase tracking-widest block font-mono">7. Live Real-World Case Brief</span>
+                <p className="text-sm text-slate-300 font-light leading-relaxed whitespace-pre-wrap">{sub.executionBlueprint.realWorldExample}</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
