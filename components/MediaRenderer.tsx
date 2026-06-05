@@ -105,9 +105,8 @@ const MediaRenderer: React.FC<MediaRendererProps> = ({ imagePrompt, videoId, tit
           >
             <motion.div 
                 whileHover={{ scale: 1.1 }}
-                className="w-24 h-24 rounded-full bg-white flex items-center justify-center text-[#0A192F] shadow-[0_0_60px_rgba(255,255,255,0.3)]"
-            >
-              <span className="text-4xl ml-2">▶</span>
+                className="w-24 h-24 rounded-full bg-white flex items-center justify-center text-[#0A192F] shadow-[0_0_60px_rgba(255,255,255,0.3)]">
+              <span className="text-4xl ml-2">\u25B6</span>
             </motion.div>
           </button>
         )}
@@ -155,7 +154,7 @@ const MediaRenderer: React.FC<MediaRendererProps> = ({ imagePrompt, videoId, tit
                 onClick={() => setShowVideo(false)}
                 className="absolute -top-20 right-0 text-white/40 hover:text-white flex items-center gap-6 text-sm font-bold uppercase tracking-[0.4em] transition-all"
               >
-                Close Briefing <span className="text-4xl font-light">✕</span>
+                Close Briefing <span className="text-4xl font-light">\u2715</span>
               </button>
               <iframe 
                 width="100%" 

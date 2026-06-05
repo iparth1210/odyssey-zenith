@@ -57,11 +57,11 @@ const SubTopicModule: React.FC<{ sub: SubTopic }> = ({ sub }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
         <div className="space-y-3">
           <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.5em] block">Sovereign Intuition</span>
-          <p className="text-lg lg:text-xl text-slate-400 font-light italic leading-relaxed tracking-tight border-l-2 border-accent/20 pl-6 lg:pl-8">{sub.streetExplanation}</p>
+          <p className="text-lg lg:text-xl text-slate-400 font-light italic leading-relaxed tracking-tight border-l-2 border-accent/20 pl-6 lg:pl-8 whitespace-pre-wrap">{sub.streetExplanation}</p>
         </div>
         <div className="space-y-3">
           <span className="text-[9px] font-black text-accent uppercase tracking-[0.5em] block">Institutional Architecture</span>
-          <p className="text-lg lg:text-xl text-white font-medium leading-relaxed tracking-tight">{sub.boardroomExplanation}</p>
+          <p className="text-lg lg:text-xl text-white font-medium leading-relaxed tracking-tight whitespace-pre-wrap">{sub.boardroomExplanation}</p>
         </div>
       </div>
 
@@ -87,11 +87,11 @@ const TopicModal: React.FC<{ topic: Topic, onClose: () => void, onComplete: () =
               <h2 className="text-2xl lg:text-4xl font-black text-white tracking-tighter uppercase leading-tight font-display truncate">{topic.title}</h2>
             </div>
           </div>
-          <button onClick={onClose} className="w-10 h-10 lg:w-14 lg:h-14 rounded-xl bg-white/5 hover:bg-white/15 flex items-center justify-center text-2xl text-white/40 transition-all border border-white/10 shrink-0">✕</button>
+          <button onClick={onClose} className="w-10 h-10 lg:w-14 lg:h-14 rounded-xl bg-white/5 hover:bg-white/15 flex items-center justify-center text-2xl text-white/40 transition-all border border-white/10 shrink-0">\u2715</button>
         </header>
 
-        <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-          <main className="flex-1 overflow-y-auto p-6 lg:p-14 custom-scrollbar space-y-12 bg-gradient-to-b from-transparent to-[#050A10]/30">
+        <div className="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
+          <main className="flex-1 lg:overflow-y-auto p-6 lg:p-14 custom-scrollbar space-y-12 bg-gradient-to-b from-transparent to-[#050A10]/30">
             <div className="max-w-5xl mx-auto space-y-12">
                 <section className="p-8 rounded-[40px] bg-white/[0.02] border border-white/5 space-y-6 relative overflow-hidden">
                   <span className="text-[10px] font-black text-accent uppercase tracking-[0.7em] block">Mission Directive</span>
@@ -103,7 +103,7 @@ const TopicModal: React.FC<{ topic: Topic, onClose: () => void, onComplete: () =
                 </div>
             </div>
           </main>
-          <aside className="w-full lg:w-[30rem] border-t lg:border-t-0 lg:border-l border-white/10 bg-[#0A0F15]/60 flex flex-col p-6 lg:p-10 gap-8 shrink-0 overflow-y-auto custom-scrollbar">
+          <aside className="w-full lg:w-[30rem] border-t lg:border-t-0 lg:border-l border-white/10 bg-[#0A0F15]/60 flex flex-col p-6 lg:p-10 gap-8 lg:shrink-0 lg:overflow-y-auto custom-scrollbar">
             <div className="flex-1 glass-terminal rounded-[24px] border-white/5 p-6 shadow-inner relative flex flex-col min-h-[350px]">
               <OracleChat currentTopic={topic.title} />
             </div>
