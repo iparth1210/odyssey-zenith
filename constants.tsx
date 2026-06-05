@@ -102,7 +102,7 @@ export const CURRICULUM: Level[] = [
   },
   {
     id: 4,
-    name: "PHASE 3: RISK ARBITRAGE",
+    name: "PHASE 3: PORTFOLIO THEORY",
     tagline: "Modern Portfolio Theory and Sharpe Ratio Dynamics.",
     status: LevelStatus.AVAILABLE,
     icon: "📊",
@@ -168,13 +168,178 @@ export const CURRICULUM: Level[] = [
   },
   {
     id: 6,
+    name: "PHASE 5: CORPORATE FINANCE & M&A",
+    tagline: "Valuing Acquisitions and Structuring Leveraged Buyouts.",
+    status: LevelStatus.AVAILABLE,
+    icon: "🤝",
+    topics: [
+      {
+        id: "t5-1",
+        title: "Leveraged Buyout Mechanics",
+        description: "Acquiring businesses using high debt ratios to maximize equity yield rates.",
+        missionStrategy: "Analyze capital allocations, debt schedules, and exit multiples to structure secure deals.",
+        category: 'CORPORATE',
+        funnyTake: "LBO is buying a house, renting it out to pay the mortgage, and selling it for a profit without spending your own cash.",
+        subTopics: [
+          {
+            title: "LBO Debt Scheduling & IRR",
+            streetExplanation: "Borrow 80% of the money needed to buy a company. Use the company's own profits to pay off the debt, then sell it.",
+            boardroomExplanation: "The structured leverage model that magnifies equity returns (IRR) by reducing the initial equity contribution.",
+            technicalBriefing: "$$IRR = \\left(\\frac{Equity_{Exit}}{Equity_{Entry}}\\right)^{\\frac{1}{n}} - 1$$",
+            explainerVideoId: "14aEip3n6oA",
+            institutionalSecret: "Corporate acquirers hide underperforming assets in newly spun-off debt entities before triggering major buyouts.",
+            imagePrompt: "Two skyscrapers connected by a glowing golden bridge of financial data pipelines.",
+            vocabulary: [{ word: "Debt Service", streetAnalogy: "Making your mortgage payments.", boardroomDefinition: "The cash required to cover the repayment of interest and principal on a debt for a particular period." }]
+          }
+        ],
+        resources: [
+          { title: "Leveraged Buyout Overview", url: "https://www.investopedia.com/terms/l/lbo.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 7,
+    name: "PHASE 6: MACROECONOMICS & CENTRAL BANKING",
+    tagline: "Sovereign Liquidity and Fiscal Policy Transmission.",
+    status: LevelStatus.AVAILABLE,
+    icon: "🌍",
+    topics: [
+      {
+        id: "t6-1",
+        title: "Federal Reserve Transmission",
+        description: "How interest rate policies filter through credit markets to control inflation and growth.",
+        missionStrategy: "Analyze Open Market Operations and quantitative easing effects on global bond markets.",
+        category: 'MACRO',
+        funnyTake: "Central banking is trying to drive a car by looking only in the rearview mirror and pressing the brakes too late.",
+        subTopics: [
+          {
+            title: "The Taylor Rule",
+            streetExplanation: "If inflation goes up, interest rates must go up. If unemployment goes up, rates must go down.",
+            boardroomExplanation: "A forecasting model used to determine optimal central bank interest rate settings based on economic output and inflation gaps.",
+            technicalBriefing: "$$i_t = r_t^* + \\pi_t + 0.5(\\pi_t - \\pi_t^*) + 0.5(y_t - y_t^*)$$",
+            explainerVideoId: "6ZhnB2Y7Kms",
+            institutionalSecret: "Central banks monitor the shadow policy rate because official rates don't capture the full scope of liquidity injections.",
+            imagePrompt: "A giant gears system representing the Fed controlling global currencies through glowing gold lines.",
+            vocabulary: [{ word: "Quantitative Easing", streetAnalogy: "Printing money to buy bonds.", boardroomDefinition: "A monetary policy whereby a central bank purchases at-scale government bonds to inject liquidity directly into the economy." }]
+          }
+        ],
+        resources: [
+          { title: "Federal Reserve Policies", url: "https://www.federalreserve.gov/monetarypolicy.htm", type: "article", provider: "Federal Reserve" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 8,
+    name: "PHASE 7: MARKET MICROSTRUCTURE & TRADING",
+    tagline: "Order Books, Limit Orders, and Liquidity Provision.",
+    status: LevelStatus.AVAILABLE,
+    icon: "⚡",
+    topics: [
+      {
+        id: "t7-1",
+        title: "Order Book Matching Protocols",
+        description: "Understanding the mechanics of bids, asks, bid-ask spreads, and market makers.",
+        missionStrategy: "Learn how order execution queues shape price discovery and trading volume.",
+        category: 'TRADING',
+        funnyTake: "Trading is just a high-speed game of musical chairs played by supercomputers.",
+        subTopics: [
+          {
+            title: "Bid-Ask Spreads & Slippage",
+            streetExplanation: "The bid is what buyers pay, the ask is what sellers want. The gap between them is how middle-men get rich.",
+            boardroomExplanation: "The pricing spread reflecting transaction costs and liquidity depth across automated clearing matching engines.",
+            technicalBriefing: "$$Spread = P_{Ask} - P_{Bid}$$",
+            explainerVideoId: "Y0jUqW5s8oE",
+            institutionalSecret: "High-frequency desks front-run large institutional orders by exploiting microsecond delays in exchange order router circuits.",
+            imagePrompt: "Fast-flowing streams of binary code matching bid/ask orders inside a golden digital gateway.",
+            vocabulary: [{ word: "Slippage", streetAnalogy: "Paying more than you expected.", boardroomDefinition: "The difference between the expected price of a trade and the actual execution price." }]
+          }
+        ],
+        resources: [
+          { title: "Market Microstructure Primer", url: "https://www.investopedia.com/terms/m/marketmicrostructure.asp", type: "article", provider: "Investopedia" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 9,
+    name: "PHASE 8: ALTERNATIVE INVESTMENTS",
+    tagline: "Hedge Funds, Private Equity, and Venture Capital.",
+    status: LevelStatus.AVAILABLE,
+    icon: "💎",
+    topics: [
+      {
+        id: "t8-1",
+        title: "Private Credit Arbitrage",
+        description: "Entering non-bank lending spaces to secure high yields from middle-market businesses.",
+        missionStrategy: "Analyze capital loan covenants, seniority structures, and risk premiums.",
+        category: 'ALTERNATIVES',
+        funnyTake: "Alternative investing is like shopping at a private boutique instead of Walmart—higher risks, but fewer crowds.",
+        subTopics: [
+          {
+            title: "Private Equity Hurdles & Carry",
+            streetExplanation: "Managers take 20% of profits, but only after they pay back investors their principal plus a guaranteed 8% return.",
+            boardroomExplanation: "The standard general partner profit allocation structured above a hurdle rate to align incentives.",
+            technicalBriefing: "$$Carry = 0.20 \\times (Total\_Return - Preferred\_Return)$$",
+            explainerVideoId: "F3f9lZ9a7Gk",
+            institutionalSecret: "Desks bypass public underwriting by originating loans to sponsor-backed companies with strict covenants.",
+            imagePrompt: "A vault containing digital representations of diamonds, gold, and private company contracts.",
+            vocabulary: [{ word: "Hurdle Rate", streetAnalogy: "The minimum grade to pass.", boardroomDefinition: "The minimum rate of return on an investment required by a manager before performance fees are triggered." }]
+          }
+        ],
+        resources: [
+          { title: "Alternative Assets (BlackRock)", url: "https://www.blackrock.com/institutions/en-us/solutions/alternative-investments", type: "article", provider: "BlackRock" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 10,
+    name: "PHASE 9: CRYPTOECONOMICS & DEFI",
+    tagline: "Smart Contracts, Automated Market Makers, and Trustless Capital.",
+    status: LevelStatus.AVAILABLE,
+    icon: "🪙",
+    topics: [
+      {
+        id: "t9-1",
+        title: "DeFi Liquidity Protocols",
+        description: "Replacing traditional clearing banks with automated mathematical liquidity pools.",
+        missionStrategy: "Learn how decentralization, constant-product formulas, and collateralization eliminate counterparty risk.",
+        category: 'DEFI',
+        funnyTake: "DeFi is like a bank run by robots where anyone can lend, borrow, and print their own currency.",
+        subTopics: [
+          {
+            title: "Constant Product AMMs",
+            streetExplanation: "If you buy token A from a pool, its price goes up. If you sell it, the price goes down. The math balances the pool.",
+            boardroomExplanation: "The foundational pricing algorithm of decentralized exchanges ensuring continuous liquidity via programmatic asset ratios.",
+            technicalBriefing: "$$x \\times y = k$$",
+            explainerVideoId: "cizLhxSKrAc",
+            institutionalSecret: "Yield farms utilize flash loans to execute arbitrage transactions in a single block without committing collateral.",
+            imagePrompt: "Smart contract scripts in gold lettering scrolling over a digital ledger map.",
+            vocabulary: [{ word: "Impermanent Loss", streetAnalogy: "Losing money relative to just holding.", boardroomDefinition: "The temporary loss of funds experienced by liquidity providers due to volatility in a liquidity pool." }]
+          }
+        ],
+        resources: [
+          { title: "DeFi Basics (Coinbase)", url: "https://www.coinbase.com/learn/crypto-basics/what-is-defi", type: "article", provider: "Coinbase" }
+        ],
+        isQuizCompleted: false
+      }
+    ]
+  },
+  {
+    id: 11,
     name: "PHASE 10: SOVEREIGN LEGACY",
     tagline: "Dynastic Wealth and Multi-Jurisdictional Arbitrage.",
     status: LevelStatus.AVAILABLE,
     icon: "🛡️",
     topics: [
       {
-        id: "t5-1",
+        id: "t10-1",
         title: "The 'Buy, Borrow, Die' Protocol",
         description: "Mastering the institutional loop for perpetual tax-free liquidity.",
         missionStrategy: "Leverage Securities-Based Lines of Credit (SBLOCs) to fund lifestyle while shielding the cost-basis.",
@@ -198,7 +363,7 @@ export const CURRICULUM: Level[] = [
         isQuizCompleted: false
       },
       {
-        id: "t5-2",
+        id: "t10-2",
         title: "Jurisdictional Arbitrage",
         description: "Optimizing Legality and Mobility via Flag Theory.",
         missionStrategy: "Distribute legal, physical, and financial presence across global jurisdictions to minimize sovereign risk.",
