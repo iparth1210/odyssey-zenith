@@ -982,5 +982,94 @@ export const CURRICULUM: Level[] = [
         isQuizCompleted: false
       }
     ]
+  },
+  {
+    id: 12,
+    name: "PHASE 11: INVESTMENT MATRIX & TECHNICAL ANALYSIS",
+    tagline: "Market Intelligence, Price Action, and Execution.",
+    status: LevelStatus.LOCKED,
+    icon: "🕯️",
+    topics: [
+      {
+        id: "t11-1",
+        title: "Market Analysis & Technical Execution",
+        description: "Master the tools and platforms needed to analyze global markets, read price action candlesticks, and execute investments.",
+        missionStrategy: "Learn how to conduct macro market screening on Bloomberg and TradingView, read candle patterns, and build long-term multi-asset portfolios.",
+        category: 'PORTFOLIO',
+        funnyTake: "Technical analysis is the art of drawing lines on historical charts to justify losing money tomorrow.",
+        isQuizCompleted: false,
+        resources: [
+          { title: "Technical Analysis of the Financial Markets", url: "https://archive.org/details/technicalanalysi0000murp", type: "book", provider: "John J. Murphy" }
+        ],
+        subTopics: [
+          {
+            title: "Sub-Phase 11.1: Macro Market Analysis & Platform Infrastructure",
+            streetExplanation: "To invest like a pro, you need to look at what's happening in the entire market. Professional investors use platforms like Bloomberg Terminals to monitor global news and interest rates, and TradingView to chart price movements. You analyze macroeconomic trends first, then zoom in on the sector, and finally pick the asset.",
+            boardroomExplanation: "WHAT: Systemic market analysis leveraging professional terminals to isolate global liquidity and macroeconomic trends.\nWHY: Aligns portfolio asset allocation with dominant macro cycles rather than minor price noise.\nWHO: Macro strategists, asset allocators, and retail fund managers.\nWHEN: Evaluated daily pre-market open and during quarterly portfolio reviews.\nWHERE: Global Bloomberg terminal feeds, TradingView platforms, and FRED databases.\nHOW: 1. Monitor central bank interest rate projections. 2. Track sector performance indices. 3. Screen for assets exhibiting positive relative strength. 4. Verify liquidity spreads before entering positions.",
+            explainerVideoId: "6ZhnB2Y7Kms",
+            technicalBriefing: "$$Expected\\_Market\\_Return = R_f + \\beta (R_m - R_f)$$",
+            vocabulary: [{ word: "Market Screening", streetAnalogy: "Using a sieve to find the biggest chunks of gold.", boardroomDefinition: "The systematic filtering of a financial asset universe using quantitative or qualitative parameters." }],
+            resources: [
+              { title: "TradingView Platform Tutorials", url: "https://www.tradingview.com/support/", type: "article", provider: "TradingView" },
+              { title: "Bloomberg Professional Services", url: "https://www.bloomberg.com/professional/solution/bloomberg-terminal/", type: "article", provider: "Bloomberg" }
+            ],
+            academicTier: "Tier 3: Undergraduate (Sophomore) | Wharton Market Research Lab",
+            executionBlueprint: {
+              monetization: "Perform institutional screening or build systematic sector rotating models, charging clients or funds based on allocation outperformance.",
+              whatToBuy: "Sector-specific index ETFs (e.g., XLK for Tech, XLF for Financials) displaying relative strength.",
+              howToBuy: "Log into your broker (Interactive Brokers/Schwab), enter ticker, choose Limit Order, and set the entry at key moving average supports.",
+              whenToBuy: "Buy when the sector ETF bounces off its 50-day moving average during a macro expansion phase.",
+              beforeAndAfterChecklist: "Before: Check Bloomberg economic calendar for upcoming FOMC or CPI releases. After: Set trailing stop-losses at 8% below entry price.",
+              platforms: ["TradingView", "Bloomberg Terminal", "FRED (Economic Data)"],
+              realWorldExample: "Analyzing the technology sector index (XLK) on TradingView, finding it has bounced off the 50-day EMA while Bloomberg shows positive earnings trends, resulting in a buy execution that nets 12% in 3 weeks."
+            }
+          },
+          {
+            title: "Sub-Phase 11.2: Candlestick Charting & Price Action Mechanics",
+            streetExplanation: "A candlestick is a simple box that shows what happened to an asset's price in a set timeframe (like 1 day). The solid box (body) shows the opening and closing prices, while the lines sticking out (wicks) show the highest and lowest prices. Analyzing these wicks and bodies tells you if buyers or sellers are winning the battle.",
+            boardroomExplanation: "WHAT: Micro-level price action charting tracking opening, high, low, and closing prices (OHLC) over discrete intervals.\nWHY: Reveals market participant psychology and order flow imbalances in real-time.\nWHO: Day traders, swing traders, and technical execution desks.\nWHEN: Analyzed constantly across multiple timeframes (1H, 4H, 1D) before executing transactions.\nWHERE: Active charting software and exchange trading screens.\nHOW: 1. Identify body size (momentum). 2. Analyze wick lengths (price rejection). 3. Identify pattern formation (e.g. Bullish Engulfing, Hammer). 4. Confirm pattern with trade volume surges.",
+            explainerVideoId: "Y0jUqW5s8oE",
+            technicalBriefing: "$$Range = Price_{High} - Price_{Low}$$",
+            vocabulary: [{ word: "OHLC", streetAnalogy: "A snapshot of the daily price war showing open, peak, valley, and close.", boardroomDefinition: "An acronym for Open, High, Low, and Close, representing the key price points of a financial instrument in a specific period." }],
+            resources: [
+              { title: "Introduction to Candlestick Charting", url: "https://www.investopedia.com/trading/candlestick-charting-what-is-it/", type: "article", provider: "Investopedia" },
+              { title: "Japanese Candlestick Charting Techniques", url: "https://archive.org/details/japanese-candlestick-charting-techniques", type: "book", provider: "Steve Nison" }
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Chicago Booth Trading Desk",
+            executionBlueprint: {
+              monetization: "Execute short-term swing trading strategies exploiting candlestick reversal patterns, compounding trading capital.",
+              whatToBuy: "Highly liquid large-cap stocks (AAPL, MSFT) or index ETFs (SPY).",
+              howToBuy: "Place a limit buy order slightly above the high of a confirmed bullish hammer candlestick pattern.",
+              whenToBuy: "Buy when a bullish hammer candlestick forms at a key historical support level on high trading volume.",
+              beforeAndAfterChecklist: "Before: Verify the candlestick body is at the bottom of a downtrend and check the average daily range. After: Place a stop-loss immediately below the low of the candlestick wick.",
+              platforms: ["TradingView", "Thinkorswim", "Webull"],
+              realWorldExample: "Spotting a Hammer candlestick pattern on Tesla's daily chart at its $180 support, entering long at $182, and placing a stop at $178, capturing a rally to $195."
+            }
+          },
+          {
+            title: "Sub-Phase 11.3: Multi-Asset Class Investing & Execution Protocols",
+            streetExplanation: "Investing isn't just about stocks. It's about spreading your cash across real estate, commodities, debt, and equities. You check index funds for broad markets, real-world platforms to buy physical assets, and use structured plans to buy consistently over time (Dollar-Cost Averaging) to build dynastic wealth.",
+            boardroomExplanation: "WHAT: Multi-asset portfolio implementation combining physical and paper investments to generate compounding yield.\nWHY: Insulates dynastic capital from systemic failures of single asset classes.\nWHO: Private wealth advisors, family offices, and retail investors.\nWHEN: Executed continuously using automated dollar-cost averaging (DCA) and asset rebalancing.\nWHERE: Global multi-asset custody accounts and investment platforms.\nHOW: 1. Decide target asset weights (e.g. 60% equities, 20% real estate, 20% bonds). 2. Automate monthly deposits. 3. Deploy cash into index products. 4. Rebalance portfolio when weights drift.",
+            explainerVideoId: "PZg1ea_U4rM",
+            technicalBriefing: "$$DCA\\_Cost = \\frac{Total\\_Capital}{\\sum \\frac{Capital_i}{Price_i}}$$",
+            vocabulary: [{ word: "Dollar-Cost Averaging", streetAnalogy: "Buying $100 of a stock every month, regardless of whether the price goes up or down.", boardroomDefinition: "An investment strategy in which an investor divides the total amount to be invested into periodic purchases of a target asset." }],
+            resources: [
+              { title: "Asset Allocation Guide", url: "https://www.investopedia.com/terms/a/assetallocation.asp", type: "article", provider: "Investopedia" },
+              { title: "The Intelligent Investor", url: "https://archive.org/details/the-intelligent-investor-benjamin-graham", type: "book", provider: "Benjamin Graham" }
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | Vanguard Asset Management School",
+            executionBlueprint: {
+              monetization: "Construct and manage a long-term retirement portfolio that consistently outperforms cash inflation, securing financial freedom.",
+              whatToBuy: "Broad market index fund ETFs (e.g., VTI for Total US Stock, VNQ for Real Estate, BND for Bonds).",
+              howToBuy: "Set up automatic monthly deposits and recurring buys on a major retail investment app.",
+              whenToBuy: "Invest a fixed amount of cash on a recurring basis (e.g., the 1st of every month) regardless of current price.",
+              beforeAndAfterChecklist: "Before: Calculate your risk tolerance score and time horizon. After: Review allocations quarterly and reinvest all dividends.",
+              platforms: ["Vanguard", "Fidelity", "Interactive Brokers"],
+              realWorldExample: "Setting up a recurring monthly $500 investment split between VTI (80%) and BND (20%), compounding at an average 8% annual return over 15 years."
+            }
+          }
+        ]
+      }
+    ]
   }
 ];
