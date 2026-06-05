@@ -24,7 +24,22 @@ const App: React.FC = () => {
       if (saved) {
         const parsed = JSON.parse(saved);
         // Only return saved state if it exists and has a user name (meaning they passed auth)
-        if (parsed.userName && parsed.userName !== '') return parsed;
+        if (parsed.userName && parsed.userName !== '') {
+          return {
+            userName: parsed.userName || '',
+            currentLevel: parsed.currentLevel || 1,
+            completedTopicIds: parsed.completedTopicIds || [],
+            totalPoints: parsed.totalPoints || 0,
+            streak: parsed.streak || 1,
+            lastActiveDate: parsed.lastActiveDate || new Date().toISOString(),
+            psychology: parsed.psychology || { trait: 'Institutional Analyst', fomoResistance: 50, analyticalPatience: 50, riskAppetite: 50 },
+            notepad: parsed.notepad || [],
+            interestScores: parsed.interestScores || { TRADER: 0, BUILDER: 0 },
+            blackSwanDecisions: parsed.blackSwanDecisions || [],
+            isCertified: parsed.isCertified || false,
+            hasCompletedOnboarding: parsed.hasCompletedOnboarding || false
+          };
+        }
       }
     } catch (e) {
       console.warn("Reset protocol initiated.");
