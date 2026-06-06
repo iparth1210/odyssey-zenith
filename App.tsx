@@ -100,6 +100,19 @@ const App: React.FC = () => {
     localStorage.setItem('sovereign_terminal_v1', JSON.stringify(progress));
   }, [progress]);
 
+  // Auto-advance level if the current level's topics are already completed
+  useEffect(() => {
+    const currentLevelTopics = CURRICULUM.find(l => l.id === progress.currentLevel)?.topics || [];
+    if (currentLevelTopics.length > 0 && currentLevelTopics.every(t => progress.completedTopicIds.includes(t.id))) {
+      if (progress.currentLevel < CURRICULUM.length) {
+        setProgress(prev => ({
+          ...prev,
+          currentLevel: prev.currentLevel + 1
+        }));
+      }
+    }
+  }, [progress.completedTopicIds, progress.currentLevel]);
+
   useEffect(() => {
     const fetchIntel = async () => {
       const intel = await getMarketIntelligence();
