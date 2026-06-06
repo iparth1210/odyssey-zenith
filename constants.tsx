@@ -3,7 +3,96 @@ import { Level, LevelStatus } from './types';
 export const CURRICULUM: Level[] = [
   {
     id: 1,
-    name: "PHASE 0: MONETARY GENESIS",
+    name: "PHASE 0: PERSONAL FINANCE & BANKING",
+    tagline: "Sovereign Budgeting, Compound Growth, and Tax Shelters.",
+    status: LevelStatus.AVAILABLE,
+    icon: "🏦",
+    topics: [
+      {
+        id: "t0-0",
+        title: "Personal Cash Management & Debt Strategy",
+        description: "Master the foundational personal finance protocols to generate surplus cash flow, optimize credit, and shield early capital from tax leakages.",
+        missionStrategy: "Learn budgeting compounding, secure a high FICO score, and establish tax-advantaged Roth/401(k) accounts.",
+        category: 'CORE',
+        funnyTake: "A budget tells your money where to go instead of wondering where it went.",
+        isQuizCompleted: false,
+        resources: [
+          { title: "Personal Finance Essentials", url: "https://www.investopedia.com/guide-to-personal-finance-4842941", type: "article", provider: "Investopedia" }
+        ],
+        subTopics: [
+          {
+            title: "Sub-Phase 0.1: Budgeting & Compound Interest Foundations",
+            streetExplanation: "Budgeting is simple: separate what you need (like rent and food) from what you want (like video games). Saving early is key because of compound interest—your saved money earns interest, and then that interest earns interest, compounding your cash over time.",
+            boardroomExplanation: "WHAT: Capital budgeting and compounding interest calculation for early-stage capital preservation.\nWHY: Establishes a baseline surplus of capital to fund subsequent asset accumulation.\nWHO: Young savers, retail depositors, and family office planners.\nWHEN: Initiated in early youth (Std 1-5); maintained throughout the lifecycle.\nWHERE: Personal checking/savings accounts and automated savings ledgers.\nHOW: 1. List monthly income. 2. Categorize fixed costs (needs) vs variable costs (wants). 3. Automate a 20% savings rate. 4. Compound surplus in interest-bearing accounts.",
+            explainerVideoId: "xguam0TKMw8",
+            technicalBriefing: "$$A = P \\left(1 + \\frac{r}{n}\\right)^{nt}$$",
+            vocabulary: [{ word: "Compound Interest", streetAnalogy: "Money making babies, and then those babies making babies of their own.", boardroomDefinition: "Interest calculated on the initial principal, which also includes all of the accumulated interest from previous periods." }],
+            resources: [
+              { title: "The Power of Compound Interest", url: "https://www.investopedia.com/terms/c/compoundinterest.asp", type: "article", provider: "Investopedia" },
+              { title: "Budgeting 101 Guide", url: "https://www.corporatefinanceinstitute.com/resources/wealth-management/budgeting-101/", type: "article", provider: "CFI" }
+            ],
+            academicTier: "Tier 1: Elementary Foundation (Std 1-5) | Stanford Center on Longevity",
+            executionBlueprint: {
+              monetization: "Create a personal cash-surplus buffer that acts as the initial capital pool for your investment portfolio.",
+              whatToBuy: "High-yield savings accounts (HYSA) or cash management accounts.",
+              howToBuy: "Open a sweep-enabled savings account at a bank offering competitive yields.",
+              whenToBuy: "Set up automatic recurring transfers from your paycheck to your savings account on the day you get paid.",
+              beforeAndAfterChecklist: "Before: Audit your monthly bank statements for recurring subscriptions you don't use. After: Re-evaluate your budget if your fixed needs exceed 50% of your take-home pay.",
+              platforms: ["YNAB (You Need A Budget)", "Ally Bank"],
+              realWorldExample: "Saving $200 a month in a 4.5% HYSA, compounding to $13,000 in 5 years compared to only $12,000 in a zero-interest checking account."
+            }
+          },
+          {
+            title: "Sub-Phase 0.2: Credit Scores & Debt Management",
+            streetExplanation: "Credit cards are convenient loans. If you pay the full balance every month, you build a good credit score (which helps you borrow cheap money later). But if you only pay the minimum, you fall into a high-interest debt trap (charging 20%+ interest) that drains your wealth.",
+            boardroomExplanation: "WHAT: Leveraging unsecured revolving credit lines and optimization of credit scores (e.g. FICO).\nWHY: Lowers borrowing costs for large-scale purchases (real estate, corporate debt) in the future.\nWHO: Consumers, credit rating agencies, and commercial card issuers.\nWHEN: Evaluated constantly with every credit usage and monthly payment cycle.\nWHERE: Domestic credit bureaus and banking networks.\nHOW: 1. Open a starter credit card. 2. Keep utilization ratio below 30%. 3. Automate full balance payments monthly. 4. Check credit reports for errors annually.",
+            explainerVideoId: "fd_emLLzJnk",
+            technicalBriefing: "$$Credit\\_Utilization = \\frac{Revolving\\_Balance}{Total\\_Credit\\_Limit}$$",
+            vocabulary: [{ word: "FICO Score", streetAnalogy: "Your financial trust grade card that tells banks how likely you are to pay them back.", boardroomDefinition: "A type of credit score created by the Fair Isaac Corporation used by lenders to assess credit risk." }],
+            resources: [
+              { title: "How to Build Credit Fast", url: "https://www.investopedia.com/articles/pf/10/credit-score-factors.asp", type: "article", provider: "Investopedia" },
+              { title: "Understanding Debt Structures", url: "https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/", type: "article", provider: "CFPB" }
+            ],
+            academicTier: "Tier 2: Secondary Education (High School) | Wharton Financial Literacy Center",
+            executionBlueprint: {
+              monetization: "Establish a credit score above 760 to secure lowest-interest mortgages and business loans, saving hundreds of thousands in interest.",
+              whatToBuy: "A cash-back or travel rewards credit card with zero annual fee.",
+              howToBuy: "Apply online via major card issuers (Chase, Amex) after verifying your pre-approval odds.",
+              whenToBuy: "Apply for a credit card when you have a stable income and a clean credit history.",
+              beforeAndAfterChecklist: "Before: Verify your credit score is in the 'good' range before applying. After: Pay off the statement balance in full before the due date.",
+              platforms: ["Credit Karma", "AnnualCreditReport.com", "Chase Credit Journey"],
+              realWorldExample: "Using a credit card to pay for monthly utilities, paying it off in full, building an 800 FICO score, and unlocking a 5.5% mortgage rate instead of a 7.5% rate, saving $100k over 30 years."
+            }
+          },
+          {
+            title: "Sub-Phase 0.3: Tax-Advantaged Shelters: 401(k), Roth & Traditional IRAs",
+            streetExplanation: "Taxes are the biggest leak in your wealth bucket. The government offers special accounts to help you save for retirement: 401(k)s (where employers often match your money, which is free cash) and IRAs (Roth IRAs are tax-free when you take money out; Traditional IRAs give you a tax break today).",
+            boardroomExplanation: "WHAT: Structured tax-advantaged retirement plans leveraging tax-deferred or tax-free compounding parameters.\nWHY: Optimizes after-tax wealth accumulation by utilizing government fiscal incentive codes.\nWHO: Employees, self-employed contractors, and IRS administrators.\nWHEN: Evaluated and funded annually based on IRS contribution limits.\nWHERE: Registered brokerage firms and employer-sponsored trust platforms.\nHOW: 1. Contribute to employer 401(k) up to match. 2. Max out a Roth IRA. 3. Invest in low-cost index funds within the accounts. 4. Let capital compound tax-free until age 59.5.",
+            explainerVideoId: "mQ_B-wYgYwU",
+            technicalBriefing: "$$Future\\_Value = P(1+r)^t - Tax\\_Liability$$",
+            vocabulary: [{ word: "Roth IRA", streetAnalogy: "A tax shelter where you pay tax on the money you put in now, but all growth and withdrawals are completely tax-free later.", boardroomDefinition: "An air-gapped retirement account allowing individuals to set aside post-tax income up to a specified annual limit, with tax-free withdrawals." }],
+            resources: [
+              { title: "IRA Contribution Limits & Rules", url: "https://www.irs.gov/retirement-plans/individual-retirement-arrangements-iras", type: "article", provider: "IRS"},
+              { title: "Choosing Roth vs Traditional", url: "https://www.investopedia.com/retirement/roth-vs-traditional-ira-which-is-better/", type: "article", provider: "Investopedia"}
+            ],
+            academicTier: "Tier 3: Undergraduate (Junior) | Berkeley Haas Wealth Management",
+            executionBlueprint: {
+              monetization: "Capture immediate 100% returns via employer matching programs and shield long-term investment growth from capital gains taxes.",
+              whatToBuy: "Employer 401(k) matching assets and Roth IRA shares.",
+              howToBuy: "Enroll in your employer's HR payroll portal for the 401(k), and open a Roth IRA at Fidelity or Vanguard.",
+              whenToBuy: "Maximize contributions annually before the IRS tax filing deadline (typically April 15 of the following year).",
+              beforeAndAfterChecklist: "Before: Check your company's vesting schedule and matching percentage. After: Select low-expense index funds (like VOO or VTSAX) inside the account so the cash doesn't sit idle.",
+              platforms: ["Fidelity", "Vanguard", "Charles Schwab"],
+              realWorldExample: "Contributing 6% of a $50k salary to a 401(k) with a 100% employer match, instantly doubling the contribution to $6,000 annually before any market growth."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "PHASE 1: MONETARY GENESIS",
     tagline: "Architecture of Trust and Global Ledger Systems.",
     status: LevelStatus.AVAILABLE,
     icon: "📜",
@@ -91,8 +180,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 2,
-    name: "PHASE 1: CAPITAL VALUATION",
+    id: 3,
+    name: "PHASE 2: CAPITAL VALUATION",
     tagline: "Equity Risk Premiums and Intrinsic Logic.",
     status: LevelStatus.LOCKED,
     icon: "📈",
@@ -180,8 +269,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 3,
-    name: "PHASE 2: DEBT & LEVERAGE",
+    id: 4,
+    name: "PHASE 3: DEBT & LEVERAGE",
     tagline: "Fixed Income and Capital Structure Optimization.",
     status: LevelStatus.LOCKED,
     icon: "🏛️",
@@ -269,8 +358,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 4,
-    name: "PHASE 3: PORTFOLIO THEORY",
+    id: 5,
+    name: "PHASE 4: PORTFOLIO THEORY",
     tagline: "Modern Portfolio Theory and Sharpe Ratio Dynamics.",
     status: LevelStatus.LOCKED,
     icon: "📊",
@@ -358,8 +447,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 5,
-    name: "PHASE 4: DERIVATIVES & VOLATILITY",
+    id: 6,
+    name: "PHASE 5: DERIVATIVES & VOLATILITY",
     tagline: "Options, Futures, and Systematic Hedging Matrix.",
     status: LevelStatus.LOCKED,
     icon: "⚙️",
@@ -447,8 +536,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 6,
-    name: "PHASE 5: CORPORATE FINANCE & M&A",
+    id: 7,
+    name: "PHASE 6: CORPORATE FINANCE & M&A",
     tagline: "Valuing Acquisitions and Structuring Leveraged Buyouts.",
     status: LevelStatus.LOCKED,
     icon: "🤝",
@@ -536,8 +625,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 7,
-    name: "PHASE 6: MACROECONOMICS & CENTRAL BANKING",
+    id: 8,
+    name: "PHASE 7: MACROECONOMICS & CENTRAL BANKING",
     tagline: "Sovereign Liquidity and Fiscal Policy Transmission.",
     status: LevelStatus.LOCKED,
     icon: "🌍",
@@ -625,8 +714,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 8,
-    name: "PHASE 7: MARKET MICROSTRUCTURE & TRADING",
+    id: 9,
+    name: "PHASE 8: MARKET MICROSTRUCTURE & TRADING",
     tagline: "Order Books, Limit Orders, and Liquidity Provision.",
     status: LevelStatus.LOCKED,
     icon: "⚡",
@@ -714,8 +803,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 9,
-    name: "PHASE 8: ALTERNATIVE INVESTMENTS",
+    id: 10,
+    name: "PHASE 9: ALTERNATIVE INVESTMENTS",
     tagline: "Hedge Funds, Private Equity, and Venture Capital.",
     status: LevelStatus.LOCKED,
     icon: "💎",
@@ -803,8 +892,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 10,
-    name: "PHASE 9: CRYPTOECONOMICS & DEFI",
+    id: 11,
+    name: "PHASE 10: CRYPTOECONOMICS & DEFI",
     tagline: "Smart Contracts, Automated Market Makers, and Trustless Capital.",
     status: LevelStatus.LOCKED,
     icon: "🪙",
@@ -892,8 +981,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 11,
-    name: "PHASE 10: SOVEREIGN LEGACY",
+    id: 12,
+    name: "PHASE 11: SOVEREIGN LEGACY",
     tagline: "Dynastic Wealth and Multi-Jurisdictional Arbitrage.",
     status: LevelStatus.LOCKED,
     icon: "🛡️",
@@ -984,8 +1073,8 @@ export const CURRICULUM: Level[] = [
     ]
   },
   {
-    id: 12,
-    name: "PHASE 11: INVESTMENT MATRIX & TECHNICAL ANALYSIS",
+    id: 13,
+    name: "PHASE 12: INVESTMENT MATRIX & TECHNICAL ANALYSIS",
     tagline: "Market Intelligence, Price Action, and Execution.",
     status: LevelStatus.LOCKED,
     icon: "🕯️",
